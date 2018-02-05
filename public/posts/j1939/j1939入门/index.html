@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> J1939入门 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="J1939入门" />
+  <meta name="twitter:title" content="J1939入门" />
+  <meta name="description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
+  <meta property="og:description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
+  <meta name="twitter:description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta property="og:url" content="http://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XeiTongXueFlyMe" />
+
+  <meta name="generator" content="Hugo 0.34" />
+  <link rel="canonical" href="http://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" />
+  <link rel="alternate" href="http://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
+  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://carsocket.cn/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+  <link rel="stylesheet" href="https://imroc.io/static/prism/prism.css" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.min.css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/default-skin/default-skin.min.css" crossorigin="anonymous" />
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">car protocol </a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="http://carsocket.cn/categories/j1939">SAE j1939</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/15765">ISO 15765</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/14229">ISO 14229</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/obd">OBD</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/kwp2000">KWP2000</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">开源协议栈</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://github.com/XeiTongXueFlyMe/J1939/releases">J1939协议栈下载</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Books</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">J1939协议栈说明书</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="XeiTongXueFlyMe" href="http://carsocket.cn/">
+            <img class="avatar-img" src="http://carsocket.cn/images/panda.png" alt="XeiTongXueFlyMe" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">J1939入门</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="j1939协议栈">J1939协议栈</h1>
+
+<p>J1939协议栈源代码维护下载网址：
+github下载地址：<a href="https://github.com/XeiTongXueFlyMe/J1939">https://github.com/XeiTongXueFlyMe/J1939</a></p>
+
+<h1 id="简介">简介：</h1>
+
+<p>SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准。目前，J1939是在<strong><em>商用车辆、舰船、轨道机车、农业机械和大型发动机</em></strong>中应用最广泛的应用层协议。提供一套标准结构使得电子设备可以相互通信。J1939是基于德国博世公司开发的CAN2.0B，可达到250Kbps的通讯速率。包括CAN网络物理层定义、数据链路层定义、应用层定义、网络层定义、故障诊断和网络管理等定义。</p>
+
+<h1 id="学习前提-预备知识">学习前提（预备知识）</h1>
+
+<ol>
+<li>对C语言熟练。</li>
+<li>对can 总线熟悉。建议看can2.0B源文档。</li>
+<li>对嵌入式编程有一定的基础（特指单片机编程，can驱动）</li>
+</ol>
+
+<h1 id="文档构成">文档构成：</h1>
+
+<ol>
+<li>SAE J1939 J1939概述</li>
+<li>SAE J1939-01 卡车，大客车控制通信文档（大概的浏览J1939协议的用法）</li>
+<li>SAE J1939-11 物理层文档</li>
+<li>SAE J1939-13 物理层文档</li>
+<li>SAE J1939-15 物理层文档</li>
+<li>SAE J1939-21 数据链路层文档（定义信息帧的数据结构，编码规则）</li>
+<li>SAE J1939-31 网络层文档（定义网络层的链接协议）</li>
+<li>SAE J1939-71 应用层文档（定义常用物理参数格式）</li>
+<li>SAE J1939-73 应用层文档（用于故障诊断）</li>
+<li>SAE J1939-74 应用层文档（可配置信息）</li>
+<li>SAE J1939-75 应用层文档（发电机组和工业设备）</li>
+<li>SAE J1939-81 网络管理协议</li>
+</ol>
+
+<p><a href="http://download.csdn.net/detail/xietongxueflyme/9887994">SAE J1939文档下载地址：</a></p>
+
+<ol>
+<li>（没有积分的童鞋，在评论中留下邮箱，随后将相应的资料奉上，博主所有资料开源，提出积分下载，仅仅是为了博客充分，望理解。）</li>
+<li>SAE J1939协议栈源代码下载地址：<a href="http://blog.csdn.net/xietongxueflyme/article/details/75014070">http://blog.csdn.net/xietongxueflyme/article/details/75014070</a></li>
+<li>加QQ群自行下载资料： 264864184</li>
+</ol>
+
+<h1 id="学习建议">学习建议</h1>
+
+<ol>
+<li>学习和使用SAE J1939，<strong><em>博主建议看原文档是个很好的学习方案</em></strong>，J1939原文档，将协议协议描述的很清楚，但很多专有名名词，很绕口。难以理解，博主将在后面文章专项的解析这些专有名词。</li>
+<li>网上有很多博主，和大神们的学习笔记很好，可以有助理解，但是<strong><em>博主建议看原文档是个很好的学习方案</em></strong>，所以一定要看源文档。而且有<strong><em>中文的源文档</em></strong>。</li>
+<li>网上有大型公司做汽车总线解决方案，涉及的软件可以生成J1939的源代码，但是一套工具上10万左右（特指大型成熟的公司），价格昂贵，不易个人学习使用，除非你在整车长上班，就算通过其他手段拿到源代码，源代码中会涉及到公司特有的硬件驱动，不易解读和学习，使用，移植。尽管这样博主建议，我们还是要多看看这些源代码，<strong><em>博主将在后面开源一个，中文，易移植，高可靠，经过验证的源代码</em></strong>，和相关的源代码分析博文。</li>
+</ol>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                 
+                <li class="next">
+                    <a href="http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="Obd入门">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XeiTongXueFlyMe" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/http://blog.csdn.net/XieTongXueFlyMe" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="http://carsocket.cn/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="XeiTongXueFlyMe.io">XeiTongXueFlyMe</a>
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.34</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          &nbsp;&bull;&nbsp;[<a href="true"></a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.js"></script>
+<script src="http://carsocket.cn/js/auto-render.min.js"></script>
+<script src="http://carsocket.cn/js/main.js"></script>
+<script src="https://imroc.io/static/prism/prism.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+

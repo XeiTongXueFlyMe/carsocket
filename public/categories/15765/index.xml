@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>15765 on XeiTongXueFlyMe</title>
+    <link>http://carsocket.cn/categories/15765/</link>
+    <description>Recent content in 15765 on XeiTongXueFlyMe</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Feb 2018 10:15:45 +0800</lastBuildDate>
+    
+	<atom:link href="http://carsocket.cn/categories/15765/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Iso15765快速入门</title>
+      <link>http://carsocket.cn/posts/15765/iso15765%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 03 Feb 2018 10:15:45 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/15765/iso15765%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>简介 ISO 15765 协议是基于CAN的车载网络系统，虽然为ISO 14229(uds),iso 15031-5(OBD)提供诊断服务而定制的，但是该协议还适用于车载内部的其他通信。 快</description>
+    </item>
+    
+  </channel>
+</rss>

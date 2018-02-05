@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Obd on XeiTongXueFlyMe</title>
+    <link>http://carsocket.cn/categories/obd/</link>
+    <description>Recent content in Obd on XeiTongXueFlyMe</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Feb 2018 11:25:02 +0800</lastBuildDate>
+    
+	<atom:link href="http://carsocket.cn/categories/obd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Obd快速入门</title>
+      <link>http://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 03 Feb 2018 11:25:02 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>简介： OBD的概念起源于美国加州空气资源管理委员会(CARB) ，目的是为了降低和控制汽车尾气对大气的污染。OBD的相关技术标准主要是由国际标</description>
+    </item>
+    
+    <item>
+      <title>Obd入门</title>
+      <link>http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 01 Feb 2018 09:41:45 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/</guid>
+      <description>OBD 产生背景 从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。 自</description>
+    </item>
+    
+  </channel>
+</rss>

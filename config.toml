@@ -1,0 +1,114 @@
+baseURL = "http://carsocket.cn/"
+languageCode = "zh-cn"
+title = "XeiTongXueFlyMe"
+theme = "xhugo"
+DefaultContentLanguage = "en"
+hasCJKLanguage = true
+metaDataFormat = "yaml"
+pygmentsUseClasses = false
+pygmentCodeFences = true
+
+[Params]
+  hello = "Hi,I'm XeiTongXueFlyMe"
+  # subtitle = "I'm XeiTongXueFlyMe"
+  logo = "images/panda.png"
+  favicon = "panda.png"
+  dateFormat = "January 2, 2006"
+  commit = true 
+  rss = true
+
+[[Params.bigimg]]
+src = "http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517640983/500354343_ja4zr4.jpg"
+desc = "car"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/imroc/image/upload/v1515849764/blog/banner/kubernetes.png"
+desc = "Kubernetes"
+
+[[Params.bigimg]]
+src = "http://res.cloudinary.com/imroc/image/upload/v1515849756/blog/banner/cloud_computing.jpg"
+desc = "Cloud Computing"
+
+[[menu.main]]
+    identifier = "Categories"
+    name = "car protocol "
+    weight = 1
+    
+[[menu.main]]
+    parent = "Categories"
+    name = "SAE j1939"
+    url = "categories/j1939"
+    weight = 1
+
+[[menu.main]]
+    parent = "Categories"
+    name = "ISO 15765"
+    url = "categories/15765"
+    weight = 2
+
+[[menu.main]]
+    parent = "Categories"
+    name = "ISO 14229"
+    url = "categories/14229"
+    weight = 3
+
+[[menu.main]]
+    parent = "Categories"
+    name = "OBD"
+    url = "categories/obd"
+    weight = 4
+[[menu.main]]
+    parent = "Categories"
+    name = "KWP2000"
+    url = "categories/kwp2000"
+    weight = 5
+[[menu.main]]
+    name = "开源协议栈"
+    weight = 2
+[[menu.main]]
+    parent = "开源协议栈"
+    name = "J1939协议栈下载"
+    url = "https://github.com/XeiTongXueFlyMe/J1939/releases"
+    weight = 1
+[[menu.main]]
+    name = "Books"
+    weight = 3
+
+[[menu.main]]
+    parent = "Books"
+    name = "J1939协议栈说明书"
+    url = "https://xeitongxueflyme.github.io/j1939doc.github.io/"
+    weight = 1
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
+
+[[menu.main]]
+    name = "About"
+    url = "about"
+    weight = 4
+
+[Author]
+name = "XeiTongXueFlyMe"
+website = "XeiTongXueFlyMe.io"
+github = "XeiTongXueFlyMe"
+twitter = "http://blog.csdn.net/XieTongXueFlyMe"
+# facebook = "username"
+# googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+# gitlab = "username"
+# reddit = "username"
+# linkedin = "username"
+# xing = "username"
+# stackoverflow = "users/XXXXXXX/username"
+# snapchat = "username"
+# instagram = "username"
+# youtube = "user/username" # or channel/channelname
+# soundcloud = "username"
+# spotify = "username"
+# bandcamp = "username"
+# itchio = "username"
+# vk = "username"
+# paypal = "username"
+# telegram = "username"

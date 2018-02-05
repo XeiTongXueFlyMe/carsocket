@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XeiTongXueFlyMe</title>
+    <link>http://carsocket.cn/</link>
+    <description>Recent content on XeiTongXueFlyMe</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Feb 2018 15:09:36 +0800</lastBuildDate>
+    
+	<atom:link href="http://carsocket.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://carsocket.cn/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://carsocket.cn/about/about/</guid>
+      <description>this is a test!</description>
+    </item>
+    
+    <item>
+      <title>Kwp2000快速入门</title>
+      <link>http://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 03 Feb 2018 15:09:36 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务</description>
+    </item>
+    
+    <item>
+      <title>Obd快速入门</title>
+      <link>http://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 03 Feb 2018 11:25:02 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>简介： OBD的概念起源于美国加州空气资源管理委员会(CARB) ，目的是为了降低和控制汽车尾气对大气的污染。OBD的相关技术标准主要是由国际标</description>
+    </item>
+    
+    <item>
+      <title>Iso15765快速入门</title>
+      <link>http://carsocket.cn/posts/15765/iso15765%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 03 Feb 2018 10:15:45 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/15765/iso15765%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>简介 ISO 15765 协议是基于CAN的车载网络系统，虽然为ISO 14229(uds),iso 15031-5(OBD)提供诊断服务而定制的，但是该协议还适用于车载内部的其他通信。 快</description>
+    </item>
+    
+    <item>
+      <title>Obd入门</title>
+      <link>http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 01 Feb 2018 09:41:45 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/</guid>
+      <description>OBD 产生背景 从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。 自</description>
+    </item>
+    
+    <item>
+      <title>J1939入门</title>
+      <link>http://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Wed, 31 Jan 2018 15:16:36 +0800</pubDate>
+      
+      <guid>http://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/</guid>
+      <description>J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM</description>
+    </item>
+    
+  </channel>
+</rss>

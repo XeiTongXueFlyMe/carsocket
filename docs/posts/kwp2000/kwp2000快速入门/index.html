@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> Kwp2000快速入门 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="Kwp2000快速入门" />
+  <meta name="twitter:title" content="Kwp2000快速入门" />
+  <meta name="description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
+  <meta property="og:description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
+  <meta name="twitter:description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta property="og:url" content="http://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XeiTongXueFlyMe" />
+
+  <meta name="generator" content="Hugo 0.34" />
+  <link rel="canonical" href="http://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <link rel="alternate" href="http://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
+  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://carsocket.cn/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+  <link rel="stylesheet" href="https://imroc.io/static/prism/prism.css" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.min.css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/default-skin/default-skin.min.css" crossorigin="anonymous" />
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">car protocol </a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="http://carsocket.cn/categories/j1939">SAE j1939</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/15765">ISO 15765</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/14229">ISO 14229</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/obd">OBD</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/kwp2000">KWP2000</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">开源协议栈</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://github.com/XeiTongXueFlyMe/J1939/releases">J1939协议栈下载</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Books</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">J1939协议栈说明书</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="XeiTongXueFlyMe" href="http://carsocket.cn/">
+            <img class="avatar-img" src="http://carsocket.cn/images/panda.png" alt="XeiTongXueFlyMe" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">Kwp2000快速入门</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Sat Feb 3, 2018</h4>
+    </section>
+    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/kwp2000/">kwp2000</a> &nbsp;
+        
+        <a href="http://carsocket.cn/tags/eobd/">EOBD</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="kwp2000入门">kwp2000入门</h1>
+
+<p>欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务，并且满足E-OBD（European On Board Diagnose）标准。KWP2000最初是基于K线的诊断协议（ISO 14230），近年来欧洲汽车领域广泛采用了基于CAN总线的KWP2000（ISO 15765），而基于K线的KWP2000物理层和数据链路层协议将逐步被淘汰。</p>
+
+<hr />
+
+<h1 id="基于k线和can线的kwp2000协议osi模型">基于K线和CAN线的KWP2000协议OSI模型</h1>
+
+<hr />
+
+<table>
+<thead>
+<tr>
+<th>OSI模型</th>
+<th>K线</th>
+<th>CAN线</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>应用层</td>
+<td>ISO 14230-3</td>
+<td>ISO 15765-3</td>
+</tr>
+
+<tr>
+<td>表示层</td>
+<td>无</td>
+<td>无</td>
+</tr>
+
+<tr>
+<td>会话层</td>
+<td>无</td>
+<td>无</td>
+</tr>
+
+<tr>
+<td>传输层</td>
+<td>无</td>
+<td>无</td>
+</tr>
+
+<tr>
+<td>链路层</td>
+<td>无</td>
+<td>ISO 15765-2</td>
+</tr>
+
+<tr>
+<td>网络层</td>
+<td>ISO 14230-2</td>
+<td>ISO 11898-1</td>
+</tr>
+
+<tr>
+<td>物理层</td>
+<td>ISO 14230-1，ISO 9141-2</td>
+<td>自定（双绞线等）</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<ol>
+<li>ISO 14230-1规定了KWP2000协议的物理层规范（K线、L线），它在ISO 9141-2的基础上把数据交换系统扩展到了24V电压系统。</li>
+<li>ISO 14230-2规定了KWP2000的数据链路层协议，包括报文结构、初始化过程、通讯连接管理、定时参数和错误处理等内容。</li>
+<li>ISO 15765-3协议，该协议完全兼容基于K线的应用层协议14230-3</li>
+<li>ISO/WD 15765-1～15765-4，该协议把KWP2000应用层的诊断服务移植到CAN总线上，基于CAN总线的KWP2000协议实际上指的就是ISO 15765-1～15765-4。</li>
+</ol>
+
+<blockquote>
+<p>K线的报文包括报文头、数据域和校验和三部分，其中报文头包含格式字节、目标地址（可选）、源地址（可选）和附加长度信息（可选），具体格式参阅ISO 14230-2。</p>
+
+<p>can线规定了网络层的格式（N_PDU），格式包括地址信息，协议控制信息，数据域（N_AI,N_PCI,N_DATA）。应用层协议规定了四种服务数据结构，<Service_Name>.Request、<Service_Name>.Indication、<Service_Name>.Response和<Service_Name>.Confirm，分别用于诊断设备（Tester）的服务请求、ECU的服务指示、ECU的服务响应和Tester的服务确认。这些数据结构中包含了地址信息、服务请求ID和服务请求参数等内容。</p>
+</blockquote>
+
+<h1 id="kwp2000数据连接口">kwp2000数据连接口</h1>
+
+<h2 id="根据iso-dis-15031-3中相关内容-dlc是一个如下16针的插座">根据ISO DIS 15031–3中相关内容，DLC是一个如下16针的插座</h2>
+
+<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623820/OBDjiekoutu_cmew5c.png" alt="OBD插座图" /></p>
+
+<h2 id="各个针脚定义如下">各个针脚定义如下：</h2>
+
+<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623808/OBDJIEKOUMIAOshu_egld52.png" alt="OBD插座图" /></p>
+
+<blockquote>
+<p>1, 3, 8, 9, 11, 12 和13 未做分配，可由车辆制造厂定义。</p>
+
+<p>2, 6, 7, 10, 14 和 15 使用作诊断通讯的。根据实际使用的通讯协议的不同，它们往往不会都被使用，为使用的可由车辆制造厂定义。</p>
+</blockquote>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="http://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="Obd快速入门">&larr; Previous Post</a>
+                </li>
+                 
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Sat Feb 3, 2018</h4>
+    </section>
+    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/kwp2000/">kwp2000</a> &nbsp;
+        
+        <a href="http://carsocket.cn/tags/eobd/">EOBD</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XeiTongXueFlyMe" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/http://blog.csdn.net/XieTongXueFlyMe" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="http://carsocket.cn/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="XeiTongXueFlyMe.io">XeiTongXueFlyMe</a>
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.34</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          &nbsp;&bull;&nbsp;[<a href="true"></a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.js"></script>
+<script src="http://carsocket.cn/js/auto-render.min.js"></script>
+<script src="http://carsocket.cn/js/main.js"></script>
+<script src="https://imroc.io/static/prism/prism.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+

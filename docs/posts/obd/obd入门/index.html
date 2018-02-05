@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> Obd入门 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="Obd入门" />
+  <meta name="twitter:title" content="Obd入门" />
+  <meta name="description" content="OBD 产生背景 从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。 自">
+  <meta property="og:description" content="OBD 产生背景 从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。 自">
+  <meta name="twitter:description" content="OBD 产生背景 从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。 自">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:image" content="http://carsocket.cn/images/panda.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta property="og:url" content="http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XeiTongXueFlyMe" />
+
+  <meta name="generator" content="Hugo 0.34" />
+  <link rel="canonical" href="http://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/" />
+  <link rel="alternate" href="http://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
+  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://carsocket.cn/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+  <link rel="stylesheet" href="https://imroc.io/static/prism/prism.css" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.min.css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/default-skin/default-skin.min.css" crossorigin="anonymous" />
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">car protocol </a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="http://carsocket.cn/categories/j1939">SAE j1939</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/15765">ISO 15765</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/14229">ISO 14229</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/obd">OBD</a>
+                
+                
+                  <a href="http://carsocket.cn/categories/kwp2000">KWP2000</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">开源协议栈</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://github.com/XeiTongXueFlyMe/J1939/releases">J1939协议栈下载</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Books</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">J1939协议栈说明书</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="XeiTongXueFlyMe" href="http://carsocket.cn/">
+            <img class="avatar-img" src="http://carsocket.cn/images/panda.png" alt="XeiTongXueFlyMe" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">Obd入门</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Thu Feb 1, 2018</h4>
+    </section>
+    <h5 id="wc">900 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/obd/">OBD</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="obd-产生背景">OBD 产生背景</h1>
+
+<pre><code>从20世纪80年代起，美、同、欧等地的汽车制造企业开始在其生产的电喷汽车上配备车载自诊断模块(On—Board Diagnostics Module)。
+自诊断模块能在汽车运行过程中实时监测电控系统及其电路元件的工作状况，如有异常，根据特定的算法判断出具体的故障，并以诊断故障代码(DTC，Diagnostic Trouble Codes)的形式存储在汽车电脑芯片内阳1。系统自诊断后得到的有用信息可以为车辆的维修和保养提供帮助，维修人员可以利用汽车原厂专用仪器读取故障码，从而可以对故障进行快速定位，故障排除后，采用专用仪器清除故障码
+由于该时期不同厂。商的OBD系统之问各行其是、互不兼容，所以被称为第一代车载自诊断系统(OBD—I，the First On—Board Diagnostics)。为了统一标准，美国汽车工程师协会(SAE，Society of Automotive Engineers)1988年制定了OBD-II标准。OBD—II实行标准的检测程序，并且具有严格的排放针对性，用于实时监测汽车尾气排放情况。
+</code></pre>
+
+<h1 id="obd的工作原理">OBD的工作原理</h1>
+
+<pre><code>汽车在正常运行时，汽车的电子控制系统输入和输出的信号（电压或电流）会在一定的范围内有一定规律地变化；当电子控制系统电路的信号出现异常且超出了正常的变化范围，并且这一异常现象在一定时间（3个连续行程）内不会消失，ECU则判断为这一部分出现故障，故障显示灯点亮，同时监测器把这一故障以代码的形式存入内部RAM（Random Access Memory: 随机存储器），被存储的故障代码在检修时可以通过故障显示灯或OBDⅡ扫描仪来读取。如果故障不再存在，监控器在连续3次未接收到相关信号后，将指令故障显示灯熄灭。故障显示灯熄灭后，发动机暖机循环约40次，则故障代码会自动从存储器中被清除掉。
+</code></pre>
+
+<h1 id="obd使用的通信协议">OBD使用的通信协议</h1>
+
+<h2 id="obd-ii">OBD—II:</h2>
+
+<pre><code>1.ISO 9141—2
+2.ISO 14230—4(KWP2000)
+3.SAE J1850PWM
+4.SAE J1850 VPM
+5.ISO 15765-4 (CAN-BUS)
+</code></pre>
+
+<h1 id="obd数据连接口">OBD数据连接口</h1>
+
+<h2 id="根据iso-dis-15031-3中相关内容-dlc是一个如下16针的插座">根据ISO DIS 15031–3中相关内容，DLC是一个如下16针的插座</h2>
+
+<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623820/OBDjiekoutu_cmew5c.png" alt="OBD插座图" /></p>
+
+<h2 id="各个针脚定义如下">各个针脚定义如下：</h2>
+
+<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623808/OBDJIEKOUMIAOshu_egld52.png" alt="OBD插座图" /></p>
+
+<blockquote>
+<p>1, 3, 8, 9, 11, 12 和13 未做分配，可由车辆制造厂定义。</p>
+
+<p>2, 6, 7, 10, 14 和 15 使用作诊断通讯的。根据实际使用的通讯协议的不同，它们往往不会都被使用，为使用的可由车辆制造厂定义。</p>
+</blockquote>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="http://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="J1939入门">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="http://carsocket.cn/posts/15765/iso15765%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="Iso15765快速入门">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Thu Feb 1, 2018</h4>
+    </section>
+    <h5 id="wc">900 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="http://carsocket.cn/tags/obd/">OBD</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XeiTongXueFlyMe" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/http://blog.csdn.net/XieTongXueFlyMe" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="http://carsocket.cn/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="XeiTongXueFlyMe.io">XeiTongXueFlyMe</a>
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://carsocket.cn/">XeiTongXueFlyMe</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.34</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          &nbsp;&bull;&nbsp;[<a href="true"></a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.js"></script>
+<script src="http://carsocket.cn/js/auto-render.min.js"></script>
+<script src="http://carsocket.cn/js/main.js"></script>
+<script src="https://imroc.io/static/prism/prism.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+
