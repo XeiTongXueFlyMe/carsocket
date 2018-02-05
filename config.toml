@@ -1,4 +1,4 @@
-baseURL = "www.carsocket.cn"
+baseURL = "https://carsocket.cn/"
 languageCode = "zh-cn"
 title = "XeiTongXueFlyMe"
 theme = "xhugo"
