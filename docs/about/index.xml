@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on XeiTongXueFlyMe</title>
-    <link>carsocket.cn/about/</link>
+    <link>www.carsocket.cn/about/</link>
     <description>Recent content in Abouts on XeiTongXueFlyMe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="carsocket.cn/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.carsocket.cn/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>carsocket.cn/about/about/</link>
+      <link>www.carsocket.cn/about/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>carsocket.cn/about/about/</guid>
+      <guid>www.carsocket.cn/about/about/</guid>
       <description>this is a test!</description>
     </item>
     
