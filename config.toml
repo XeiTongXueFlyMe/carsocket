@@ -22,8 +22,8 @@ src = "http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517640983/500354
 desc = "car"
 
 [[Params.bigimg]]
-src = "https://res.cloudinary.com/imroc/image/upload/v1515849764/blog/banner/kubernetes.png"
-desc = "Kubernetes"
+src = "http://res.cloudinary.com/dncex6dem/image/upload/v1517880420/234234242.jpg"
+desc = "3d"
 
 [[Params.bigimg]]
 src = "http://res.cloudinary.com/imroc/image/upload/v1515849756/blog/banner/cloud_computing.jpg"
