@@ -5,10 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> Categories - </title>
+  <title> J1939socket_v1.1.0源代码分析1 - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="Categories" />
-  <meta name="twitter:title" content="Categories" />
+  <meta property="og:title" content="J1939socket_v1.1.0源代码分析1" />
+  <meta name="twitter:title" content="J1939socket_v1.1.0源代码分析1" />
+  <meta name="description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 函数名 函数名 类型 注解 J1939_SetAddressFilter（">
+  <meta property="og:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 函数名 函数名 类型 注解 J1939_SetAddressFilter（">
+  <meta name="twitter:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 函数名 函数名 类型 注解 J1939_SetAddressFilter（">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
@@ -16,12 +19,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
   <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
-  <meta property="og:url" content="https://carsocket.cn/categories/" />
+  <meta property="og:url" content="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
   <meta name="generator" content="Hugo 0.34" />
-  <link rel="canonical" href="https://carsocket.cn/categories/" />
+  <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
@@ -206,8 +209,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="categories-heading">
-                <h1 align="center">Categories</h1>
+            <div class="posts-heading">
+                <h1 align="center">J1939socket_v1.1.0源代码分析1</h1>
                 
                 
             </div>
@@ -219,26 +222,155 @@
 
 
     
-  
-  <div class="container" role="main">
-    <article class="post-preview">
-      <div class="list-group col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-      
-      <a href="https://carsocket.cn/categories/j1939/" class="list-group-item">
-          j1939<span class="badge">10</span></a>
-      
-      <a href="https://carsocket.cn/categories/obd/" class="list-group-item">
-          obd<span class="badge">3</span></a>
-      
-      <a href="https://carsocket.cn/categories/15765/" class="list-group-item">
-          15765<span class="badge">1</span></a>
-      
-      <a href="https://carsocket.cn/categories/kwp2000/" class="list-group-item">
-          kwp2000<span class="badge">1</span></a>
-      
-      </div>
-    </article>
-  </div>
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">600 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="预备知识">预备知识</h1>
+
+<ol>
+<li>熟悉CAN2.0B协议，及相关硬件驱动开发</li>
+<li>熟悉SAE J1939协议</li>
+</ol>
+
+<h1 id="函数名">函数名</h1>
+
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">类型</th>
+<th align="center">注解</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">J1939_SetAddressFilter（）</td>
+<td align="center">与CAN的移植接口</td>
+<td align="center">设置滤波器函数，起到接受滤波作用</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="函数功能">函数功能</h1>
+
+<p>基于SAE J1939协议，我们需要CAN控制器提供至少3个滤波器给J1939协议代码。三个滤波器分别配置如下：
+1. 设置滤波器0，只接受广播信息（PF = 240 -255）。
+2. 设置设置滤波器1，2只接受全局地址（J1939_GLOBAL_ADDRESS）
+3. 随着程序的运行，将改变滤波器2，来适应程序逻辑。</p>
+
+<p><code>J1939_SetAddressFilter()</code> 是用来设置滤波器2的，  函数主要设置PS位（目标地址），其目的是，让控制器只接受发送给本设备的消息。</p>
+
+<h1 id="函数参数">函数参数</h1>
+
+<pre><code>#define Port_SetAddressFilter(Address) J1939_SetAddressFilter(Address)
+
+void J1939_SetAddressFilter(unsigned char Ps_Address)
+{
+	//你的移植代码;
+}
+</code></pre>
+
+<p>传入参数 Ps_Address是我们要滤波的 PS值（0 - 255）。</p>
+
+<h1 id="移植示例">移植示例</h1>
+
+<blockquote>
+<p>采用英飞凌XMC4500,对can驱动层，配置了3个滤波器，拿滤波器2来作为J1939_SetAddressFilter（） 设置的滤波器。</p>
+</blockquote>
+
+<pre><code>void J1939_SetAddressFilter(unsigned char Ps_Address)
+{
+	/*配置can驱动的结构体，设置滤波器2的PS字段*/
+	CAN_NODE3_DEBUG.lmobj_ptr[2]-&gt;mo_ptr-&gt;can_id_mask &amp;=0XFFFF00FF;
+	CAN_NODE3_DEBUG.lmobj_ptr[2]-&gt;mo_ptr-&gt;can_id_mask |= (Ps_Address&lt;&lt;8);
+	/*将can驱动结构体，重新写入滤波器2*/
+	CAN_NODE_MO_Init(CAN_NODE3_DEBUG.lmobj_ptr[2]);
+}
+</code></pre>
+
+<h1 id="程序说明">程序说明</h1>
+
+<pre><code>本函数提供给协议自身使用，除非协议被当做网络管理器。
+</code></pre>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析2">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0应用示例">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/">利用J1939传输8字节以上的数据（TP长帧传输）</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/">J1939socket_v1.1.0源代码分析3</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">600 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
 
     <footer>
   <div class="container">

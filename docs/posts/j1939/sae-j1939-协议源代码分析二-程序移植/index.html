@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> J1939socket_v1.1.0移植 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="J1939socket_v1.1.0移植" />
+  <meta name="twitter:title" content="J1939socket_v1.1.0移植" />
+  <meta name="description" content="预备知识 1.熟悉CAN2.0B协议，及相关硬件驱动开发 2.熟悉SAE J1939协议 程序移植流程 备注：ECU板子必须是支持CAN2.0B。如果">
+  <meta property="og:description" content="预备知识 1.熟悉CAN2.0B协议，及相关硬件驱动开发 2.熟悉SAE J1939协议 程序移植流程 备注：ECU板子必须是支持CAN2.0B。如果">
+  <meta name="twitter:description" content="预备知识 1.熟悉CAN2.0B协议，及相关硬件驱动开发 2.熟悉SAE J1939协议 程序移植流程 备注：ECU板子必须是支持CAN2.0B。如果">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
+  <meta name="twitter:image" content="https://carsocket.cn/images/panda.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta property="og:url" content="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%8C-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XeiTongXueFlyMe" />
+
+  <meta name="generator" content="Hugo 0.34" />
+  <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%8C-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D/" />
+  <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
+  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://carsocket.cn/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+  <link rel="stylesheet" href="https://imroc.io/static/prism/prism.css" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.min.css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/default-skin/default-skin.min.css" crossorigin="anonymous" />
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://carsocket.cn/">XeiTongXueFlyMe</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">car protocol </a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://carsocket.cn/categories/j1939">SAE j1939</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/15765">ISO 15765</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/14229">ISO 14229</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/obd">OBD</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/kwp2000">KWP2000</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">开源协议栈</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://github.com/XeiTongXueFlyMe/J1939/releases">J1939协议栈下载</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Books</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">J1939协议栈说明书</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="XeiTongXueFlyMe" href="https://carsocket.cn/">
+            <img class="avatar-img" src="https://carsocket.cn/images/panda.png" alt="XeiTongXueFlyMe" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">J1939socket_v1.1.0移植</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">1900 Words|Read in about 4 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="预备知识">预备知识</h1>
+
+<pre><code>1.熟悉CAN2.0B协议，及相关硬件驱动开发
+2.熟悉SAE J1939协议
+</code></pre>
+
+<h1 id="程序移植流程">程序移植流程</h1>
+
+<blockquote>
+<p>备注：ECU板子必须是支持CAN2.0B。如果移植设备需要处理高并发数据流，建议使用中断模式，例如J1939网络管理器，行车控制器。发动机控制器等。其他应用皆可以用轮询。轮询完全可以满足毫秒级别的响应速度。</p>
+</blockquote>
+
+<h3 id="熟悉an2-0b驱动编写-练习can2-0b扩展帧驱动编写-实现扩展帧的收发-和波特率-硬件滤波配置">熟悉AN2.0B驱动编写,练习CAN2.0B扩展帧驱动编写,实现扩展帧的收发，和波特率，硬件滤波配置</h3>
+
+<pre><code>&gt; start: 将代码加载到你的工程
+&gt;&gt; 打开配置文件J1939_Config.h
+&gt;&gt;&gt; 查阅J1939附录B（地址和标识符分配）,配J1939地址和标识符
+&gt;&gt;&gt;&gt; 了解J1939支持的功能配置,J1939功能配置
+&gt;&gt;&gt;&gt;&gt; 按J1939_Config.h文件提示说明，移植相关的函数功能
+</code></pre>
+
+<blockquote>
+<p>备注：特殊情况，如果不用TP功能，关闭此功能的申明在J1939.H，这是配置唯一不再J1939config.h中的配置。默认TP协议时开启的。</p>
+</blockquote>
+
+<h1 id="移植示例-demo">移植示例(demo)</h1>
+
+<blockquote>
+<p>以下示例，对德国英飞凌XMC4500(MCU)芯片自带的CAN模块上移植J1939协议源代码，代码中can驱动函数，can的驱动结构体，可供移植参考</p>
+</blockquote>
+
+<pre><code class="language-c">#ifndef __J1939_Config_H 
+#define __J1939_Config_H 
+
+#include &quot;J1939.H&quot;
+
+#include &quot;../UserApp/includes.h&quot;//用户，自己工程必要的声明头文件
+/******************************J1939地址和标识符配*********************************/
+//设备默认的地址（地址命名是有规定的，参考J1939的附录B 地址和标识符的分配）
+#define J1939_STARTING_ADDRESS 243
+//如果声明不为0，表示我们的ECU(电子控制单元)支持网络中申请的任意地址，（参考J1939的网络层）
+#define J1939_ARBITRARY_ADDRESS 0x00
+#define J1939_INDUSTRY_GROUP 0
+#define J1939_VEHICLE_INSTANCE 0
+#define J1939_CA_NAME7 (J1939_ARBITRARY_ADDRESS | (J1939_INDUSTRY_GROUP &lt;&lt; 4) | J1939_VEHICLE_INSTANCE)
+#define J1939_VEHICLE_SYSTEM 0
+#define J1939_CA_NAME6 (J1939_VEHICLE_SYSTEM &lt;&lt; 1)
+#define J1939_FUNCTION 0
+#define J1939_CA_NAME5 J1939_FUNCTION
+#define J1939_FUNCTION_INSTANCE 0
+#define J1939_ECU_INSTANCE 0
+#define J1939_CA_NAME4 ((J1939_FUNCTION_INSTANCE &lt;&lt; 3) | J1939_ECU_INSTANCE)
+#define J1939_MANUFACTURER_CODE 0
+#define J1939_IDENTITY_NUMBER 50
+#define J1939_CA_NAME3 (J1939_MANUFACTURER_CODE &gt;&gt; 3)
+#define J1939_CA_NAME2 (((J1939_MANUFACTURER_CODE &amp; 0x07) &lt;&lt; 5) | (J1939_IDENTITY_NUMBER &gt;&gt; 16))
+#define J1939_CA_NAME1 ((J1939_IDENTITY_NUMBER &gt;&gt; 8) &amp; 0xFF)
+#define J1939_CA_NAME0 (J1939_IDENTITY_NUMBER &amp; 0xFF)
+/******************************J1939功能配置******************************************/
+//是否使用接受协议（对TP协议的支持，参考J1939-21）
+#define J1939_ACCEPT_CMDADD J1939_FALSE
+#define J1939_RX_QUEUE_SIZE 3
+//当mcu来不及处理消息，接收消息列队是否允许被新的消息覆盖
+#define J1939_OVERWRITE_RX_QUEUE J1939_FALSE
+#define J1939_TX_QUEUE_SIZE 3
+//当mcu来不及处理消息，发送消息列队是否允许被新的消息覆盖
+#define J1939_OVERWRITE_TX_QUEUE J1939_FALSE
+//是否使用轮询模式（否则使用中断模式）
+#define J1939_POLL_ECAN J1939_TRUE
+#define J1939_PRIORITIZED_INT J1939_TRUE
+
+/******************************J1939移植配置函数******************************************/
+#define Port_CAN_Transmit(MsgPtr) J1939_CAN_Transmit(MsgPtr) 
+#define Port_CAN_Receive(MsgPtr) J1939_CAN_Receive(MsgPtr)
+#define Port_SetAddressFilter(Address) J1939_SetAddressFilter(Address)
+#define Port_RXinterruptEnable() J1939_RXinterruptEnable() 
+#define Port_RXinterruptDisable() J1939_RXinterruptDisable() 
+#define Port_TXinterruptEnable() J1939_TXinterruptEnable() 
+#define Port_TXinterruptDisable() J1939_TXinterruptDisable() 
+/******************************J1939与CAN驱动接口函数************************************/
+void J1939_SetAddressFilter(unsigned char Ps_Address)
+{
+	CAN_NODE3_DEBUG.lmobj_ptr[0]-&gt;mo_ptr-&gt;can_id_mask &amp;=0XFFFF00FF;
+	CAN_NODE3_DEBUG.lmobj_ptr[0]-&gt;mo_ptr-&gt;can_id_mask |= (Ps_Address&lt;&lt;8);
+    CAN_NODE_MO_Init(CAN_NODE3_DEBUG.lmobj_ptr[0]);
+}
+void ChangeGroupIDofLMO(const CAN_NODE_LMO_t *lmo_ptr,J1939_MESSAGE *MsgPtr)
+{
+	int _i=0;
+	lmo_ptr-&gt;mo_ptr-&gt;can_identifier = 0;
+	for(_i=0;_i&lt;4;_i++)
+	{
+		lmo_ptr-&gt;mo_ptr-&gt;can_identifier = (lmo_ptr-&gt;mo_ptr-&gt;can_identifier &lt;&lt; 8) + MsgPtr-&gt;Array[_i];
+	}
+	// 在线修改lmo配置
+    CAN_NODE_MO_Init(lmo_ptr);
+}
+
+/*从MsgPtr加载到CAN自带的结构体中*/
+void J1939_CAN_Transmit(J1939_MESSAGE *MsgPtr)
+{
+	CAN_NODE_LMO_t *lmo_ptr = CAN_NODE3_DEBUG.lmobj_ptr[1];
+	/*加载29位ID*/
+	ChangeGroupIDofLMO((const CAN_NODE_LMO_t * const)(CAN_NODE3_DEBUG.lmobj_ptr[1]),MsgPtr);
+	/*加载数据长度*/
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_length = MsgPtr-&gt;Mxe.DataLength;
+	CAN_NODE_MO_Init(lmo_ptr);
+	/*加载数据*/
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[0] = MsgPtr-&gt;Mxe.Data[0];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[1] = MsgPtr-&gt;Mxe.Data[1];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[2] = MsgPtr-&gt;Mxe.Data[2];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[3] = MsgPtr-&gt;Mxe.Data[3];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[4] = MsgPtr-&gt;Mxe.Data[4];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[5] = MsgPtr-&gt;Mxe.Data[5];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[6] = MsgPtr-&gt;Mxe.Data[6];
+	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[7] = MsgPtr-&gt;Mxe.Data[7];
+	/*加载RTR*/
+	//你的代码
+	//开始发送数据
+	(CAN_NODE_STATUS_t) CAN_NODE_MO_Transmit(lmo_ptr) ;
+}
+//将设备CAN中的数据取出，存入J1939_MESSAGE结构体中
+int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
+{
+	uint32_t receive_status=0;
+	uint32_t _id=0;
+	receive_status = CAN_NODE_MO_GetStatus( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
+	if ( receive_status &amp; XMC_CAN_MO_STATUS_RX_PENDING)  //XMC_CAN_MO_STATUS_NEW_DATA
+	{
+	  // 清除接受标识位
+	  CAN_NODE_MO_ClearStatus(((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0],XMC_CAN_MO_RESET_STATUS_RX_PENDING);
+	  // 读取数据
+	  CAN_NODE_MO_Receive( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
+	  //将29位标志位（can_identifier）写入J1939的结构中
+	  _id = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_identifier;
+	  MsgPtr-&gt;Array[0] = _id&gt;&gt;(8*3);
+	  MsgPtr-&gt;Array[1] = _id&gt;&gt;(8*2);
+	  MsgPtr-&gt;Array[2] = _id&gt;&gt;(8*1);
+	  MsgPtr-&gt;Array[3] = _id&gt;&gt;(8*0);
+	  //读取数据长度
+	  MsgPtr-&gt;Mxe.DataLength = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_length;
+	  if (MsgPtr-&gt;Mxe.DataLength &gt; 8)
+		  MsgPtr-&gt;Mxe.DataLength = 8;
+	  //读取数据
+	  MsgPtr-&gt;Mxe.Data[0] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[0];
+	  MsgPtr-&gt;Mxe.Data[1] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[1];
+	  MsgPtr-&gt;Mxe.Data[2] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[2];
+	  MsgPtr-&gt;Mxe.Data[3] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[3];
+	  MsgPtr-&gt;Mxe.Data[4] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[4];
+	  MsgPtr-&gt;Mxe.Data[5] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[5];
+	  MsgPtr-&gt;Mxe.Data[6] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[6];
+	  MsgPtr-&gt;Mxe.Data[7] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[7];
+
+	  return 1;
+	}else
+	{
+		return 0;//没有消息
+	}
+}
+
+void J1939_RXinterruptEnable()
+{
+	;
+}
+
+void J1939_RXinterruptDisable()
+{
+	;
+}
+void J1939_TXinterruptEnable()
+{
+	;
+}
+
+void J1939_TXinterruptDisable()
+{
+	;
+}
+#endif
+</code></pre>
+
+<h1 id="选着性的移植函数">选着性的移植函数</h1>
+
+<blockquote>
+<p>如果不要此功能，可以不用编写下面的移植函数</p>
+</blockquote>
+
+<pre><code class="language-c">//设备默认的地址（地址命名是有规定的，参考J1939的附录B 地址和标识符的分配）
+#define J1939_STARTING_ADDRESS 243   //这里填写你设备默认的地址
+//如果声明不为0，表示我们的ECU(电子控制单元)支持网络中申请的任意地址，（参考J1939的网络层）
+#define J1939_ARBITRARY_ADDRESS 0x00
+/*
+*输入：需要改变地址的地址的指针，
+*输出： 
+*说明：地址竞争重新估算，设备在总线上要重新申请的地址。
+	  设备是固定地址的，不需要移植此函数。
+	  函数为各个厂家想申请的地址，如果默认地址没有申请成功
+	  则调用此函数，重新申请一个希望得到的地址，当然可能再一次
+	  申请不成功，所以函数可以返回多个不同的地址，一次返回一个
+*/
+BOOL ECU_RecalculateAddress( unsigned char * Address)
+{
+	return 0;//没有生成新的地址，返回0
+}
+</code></pre>
+
+<h1 id="备注">备注</h1>
+
+<blockquote>
+<p>J1939与CAN2.0B驱动接口函数在后面，将逐一的分析。</p>
+</blockquote>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://carsocket.cn/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/" data-toggle="tooltip" data-placement="top" title="J1939socket_v2.1.0的移植，示例，API">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析5">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/">利用J1939传输8字节以上的数据（TP长帧传输）</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">1900 Words|Read in about 4 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XeiTongXueFlyMe" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/http://blog.csdn.net/XieTongXueFlyMe" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://carsocket.cn/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="XeiTongXueFlyMe.io">XeiTongXueFlyMe</a>
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://carsocket.cn/">XeiTongXueFlyMe</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.34</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          &nbsp;&bull;&nbsp;[<a href="true"></a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.js"></script>
+<script src="https://carsocket.cn/js/auto-render.min.js"></script>
+<script src="https://carsocket.cn/js/main.js"></script>
+<script src="https://imroc.io/static/prism/prism.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+

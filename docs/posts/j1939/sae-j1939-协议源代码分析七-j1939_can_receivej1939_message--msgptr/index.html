@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> J1939入门 - </title>
+  <title> J1939socket_v1.1.0源代码分析4 - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="J1939入门" />
-  <meta name="twitter:title" content="J1939入门" />
-  <meta name="description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
-  <meta property="og:description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
-  <meta name="twitter:description" content="J1939协议栈 J1939协议栈源代码维护下载网址： github下载地址：https://github.com/XeiTongXueFlyM">
+  <meta property="og:title" content="J1939socket_v1.1.0源代码分析4" />
+  <meta name="twitter:title" content="J1939socket_v1.1.0源代码分析4" />
+  <meta name="description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
+  <meta property="og:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
+  <meta name="twitter:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
@@ -19,12 +19,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
   <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
-  <meta property="og:url" content="https://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" />
+  <meta property="og:url" content="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
   <meta name="generator" content="Hugo 0.34" />
-  <link rel="canonical" href="https://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" />
+  <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
@@ -210,7 +210,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="posts-heading">
-                <h1 align="center">J1939入门</h1>
+                <h1 align="center">J1939socket_v1.1.0源代码分析4</h1>
                 
                 
             </div>
@@ -232,10 +232,12 @@
     <section id="datecount">
         <h4 id="date"> Wed Jan 31, 2018</h4>
     </section>
-    <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+    <h5 id="wc">1300 Words|Read in about 3 Min</h5>
     <h5 id="tags">Tags: 
         
         <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
     </h5>
 </div>
 
@@ -243,66 +245,178 @@
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
                 
 
-<h1 id="j1939协议栈">J1939协议栈</h1>
-
-<p>J1939协议栈源代码维护下载网址：
-github下载地址：<a href="https://github.com/XeiTongXueFlyMe/J1939">https://github.com/XeiTongXueFlyMe/J1939</a></p>
-
-<h1 id="简介">简介：</h1>
-
-<p>SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准。目前，J1939是在<strong><em>商用车辆、舰船、轨道机车、农业机械和大型发动机</em></strong>中应用最广泛的应用层协议。提供一套标准结构使得电子设备可以相互通信。J1939是基于德国博世公司开发的CAN2.0B，可达到250Kbps的通讯速率。包括CAN网络物理层定义、数据链路层定义、应用层定义、网络层定义、故障诊断和网络管理等定义。</p>
-
-<h1 id="学习前提-预备知识">学习前提（预备知识）</h1>
+<h1 id="预备知识">预备知识</h1>
 
 <ol>
-<li>对C语言熟练。</li>
-<li>对can 总线熟悉。建议看can2.0B源文档。</li>
-<li>对嵌入式编程有一定的基础（特指单片机编程，can驱动）</li>
+<li>熟悉CAN2.0B协议，及相关硬件驱动开发</li>
+
+<li><p>熟悉SAE J1939协议<a href="http://blog.csdn.net/xietongxueflyme/article/details/74276702/">http://blog.csdn.net/xietongxueflyme/article/details/74276702/</a></p>
+
+<h1 id="函数名">函数名</h1>
+
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">类型</th>
+<th align="center">注解</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">J1939_CAN_Receive（）</td>
+<td align="center">与CAN驱动的接口</td>
+<td align="center">将设备CAN中的数据取出，存入J1939_MESSAGE结构体中，如果没有数据，返回0</td>
+</tr>
+</tbody>
+</table></li>
 </ol>
 
-<h1 id="文档构成">文档构成：</h1>
+<h1 id="函数功能">函数功能</h1>
 
-<ol>
-<li>SAE J1939 J1939概述</li>
-<li>SAE J1939-01 卡车，大客车控制通信文档（大概的浏览J1939协议的用法）</li>
-<li>SAE J1939-11 物理层文档</li>
-<li>SAE J1939-13 物理层文档</li>
-<li>SAE J1939-15 物理层文档</li>
-<li>SAE J1939-21 数据链路层文档（定义信息帧的数据结构，编码规则）</li>
-<li>SAE J1939-31 网络层文档（定义网络层的链接协议）</li>
-<li>SAE J1939-71 应用层文档（定义常用物理参数格式）</li>
-<li>SAE J1939-73 应用层文档（用于故障诊断）</li>
-<li>SAE J1939-74 应用层文档（可配置信息）</li>
-<li>SAE J1939-75 应用层文档（发电机组和工业设备）</li>
-<li>SAE J1939-81 网络管理协议</li>
-</ol>
+<p>基于SAE J1939协议，读取CAN驱动的数据，如果没有数据，返回0，否则将设备CAN中的数据取出，存入J1939_MESSAGE结构体中，返回1.</p>
 
-<p><a href="http://download.csdn.net/detail/xietongxueflyme/9887994">SAE J1939文档下载地址：</a></p>
+<h1 id="函数参数">函数参数</h1>
 
-<ol>
-<li>（没有积分的童鞋，在评论中留下邮箱，随后将相应的资料奉上，博主所有资料开源，提出积分下载，仅仅是为了博客充分，望理解。）</li>
-<li>SAE J1939协议栈源代码下载地址：<a href="http://blog.csdn.net/xietongxueflyme/article/details/75014070">http://blog.csdn.net/xietongxueflyme/article/details/75014070</a></li>
-<li>加QQ群自行下载资料： 264864184</li>
-</ol>
+<blockquote>
+<p>读取CAN驱动的数据，如果没有数据，返回0, 否则返回1.<strong>函数必须返回</strong></p>
+</blockquote>
 
-<h1 id="学习建议">学习建议</h1>
+<pre><code>/*
+*输入：J1939_MESSAGE *MsgPtr 数据要存入的内存的指针
+*输出： 
+*说明：读取CAN驱动的数据，如果没有数据，返回0
+		将设备CAN中的数据取出，存入J1939_MESSAGE结构体中
+*/
+int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
+{
+	if ( ) //判断有没有新的数据
+	{
+	  // 清除接受标识位
+	  ;
+	  // 读取数据
+	  ;
+	  //将29位标志位（can_identifier）写入J1939的结构中
+	  _id = XXX; //假如_id等于读取CAN驱动中的ID
+	  MsgPtr-&gt;Array[0] = _id&gt;&gt;(8*3);
+	  MsgPtr-&gt;Array[1] = _id&gt;&gt;(8*2);
+	  MsgPtr-&gt;Array[2] = _id&gt;&gt;(8*1);
+	  MsgPtr-&gt;Array[3] = _id&gt;&gt;(8*0);
+	  //读取数据长度
+	  MsgPtr-&gt;Mxe.DataLength = XXXXXXX;
+	  if (MsgPtr-&gt;Mxe.DataLength &gt; 8)
+		  MsgPtr-&gt;Mxe.DataLength = 8;
+	  //读取数据
+	  MsgPtr-&gt;Mxe.Data[0] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[1] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[2] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[3] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[4] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[5] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[6] = XXXXXX;
+	  MsgPtr-&gt;Mxe.Data[7] = XXXXXX;
 
-<ol>
-<li>学习和使用SAE J1939，<strong><em>博主建议看原文档是个很好的学习方案</em></strong>，J1939原文档，将协议协议描述的很清楚，但很多专有名名词，很绕口。难以理解，博主将在后面文章专项的解析这些专有名词。</li>
-<li>网上有很多博主，和大神们的学习笔记很好，可以有助理解，但是<strong><em>博主建议看原文档是个很好的学习方案</em></strong>，所以一定要看源文档。而且有<strong><em>中文的源文档</em></strong>。</li>
-<li>网上有大型公司做汽车总线解决方案，涉及的软件可以生成J1939的源代码，但是一套工具上10万左右（特指大型成熟的公司），价格昂贵，不易个人学习使用，除非你在整车长上班，就算通过其他手段拿到源代码，源代码中会涉及到公司特有的硬件驱动，不易解读和学习，使用，移植。尽管这样博主建议，我们还是要多看看这些源代码，<strong><em>博主将在后面开源一个，中文，易移植，高可靠，经过验证的源代码</em></strong>，和相关的源代码分析博文。</li>
-</ol>
+	  return 1;
+	}else
+	{
+		return 0;//没有消息
+	}
+}
+</code></pre>
+
+<p>J1939_MESSAGE *MsgPtr 数据要存入的内存的指针，J1939_MESSAGE 消息结构体在J1939.h中，按J1939的收发格式做的。</p>
+
+<pre><code>#define J1939_MSG_LENGTH	5  //消息长度
+#define J1939_DATA_LENGTH	8  //数据长度
+union J1939_MESSAGE_UNION 
+{ 
+	struct   me 
+	{ 
+		unsigned int	DataPage			: 1; 
+		unsigned int	Res					: 1; 
+		unsigned int	Priority			: 3; 
+		unsigned int	PDUFormat_Top		: 3;
+		unsigned char	PDUFormat;					
+		unsigned char	PDUSpecific; 
+		unsigned char	SourceAddress; 
+		unsigned int	DataLength 			: 4; 
+		unsigned int	RTR					: 4;	
+		unsigned char	Data[J1939_DATA_LENGTH]; 
+	};
+	struct me Mxe;
+	unsigned char		Array[J1939_MSG_LENGTH + J1939_DATA_LENGTH]; 
+}; 
+</code></pre>
+
+<p>判断是否有数据接受，有就存下数据返回1，没有返回0，<strong>函数必须返回</strong>，判断函数你的CAN驱动得支持。
+&gt; <strong>清除接受标识位</strong>这个步根据设计可要可不要，举个例子，我在XMC4500上移植，当有新的消息来时，标识位置位，可读取数据，但是不清除标识位，再次进入J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)时，判断函数认为又有新消息（实际没有），读取数据后返回1.所以，<strong>我的移植必须要清除标识位</strong>（用来判断有没有数据）。</p>
+
+<h1 id="移植示例">移植示例</h1>
+
+<blockquote>
+<p>采用英飞凌XMC4500,对can驱动层，提取了CAN结构体，CAN_NODE3_DEBUG.lmobj_ptr[0]。将J1939协议自带的结构体 J1939_MESSAGE 中的数据写入CAN的结构体中。</p>
+</blockquote>
+
+<pre><code>/*
+*输入：J1939_MESSAGE *MsgPtr 数据要存入的内存的指针
+*输出： 
+*说明：读取CAN驱动的数据，如果没有数据，返回0
+		将设备CAN中的数据取出，存入J1939_MESSAGE结构体中
+*/
+int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
+{
+	uint32_t receive_status=0;
+	uint32_t _id=0;
+	receive_status = CAN_NODE_MO_GetStatus( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
+	if ( receive_status &amp; XMC_CAN_MO_STATUS_RX_PENDING)  //XMC_CAN_MO_STATUS_NEW_DATA
+	{
+	  // 清除接受标识位
+	  CAN_NODE_MO_ClearStatus(((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0],XMC_CAN_MO_RESET_STATUS_RX_PENDING);
+	  // 读取数据
+	  CAN_NODE_MO_Receive( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
+	  //将29位标志位（can_identifier）写入J1939的结构中
+	  _id = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_identifier;
+	  MsgPtr-&gt;Array[0] = _id&gt;&gt;(8*3);
+	  MsgPtr-&gt;Array[1] = _id&gt;&gt;(8*2);
+	  MsgPtr-&gt;Array[2] = _id&gt;&gt;(8*1);
+	  MsgPtr-&gt;Array[3] = _id&gt;&gt;(8*0);
+	  //读取数据长度
+	  MsgPtr-&gt;Mxe.DataLength = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_length;
+	  if (MsgPtr-&gt;Mxe.DataLength &gt; 8)
+		  MsgPtr-&gt;Mxe.DataLength = 8;
+	  //读取数据
+	  MsgPtr-&gt;Mxe.Data[0] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[0];
+	  MsgPtr-&gt;Mxe.Data[1] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[1];
+	  MsgPtr-&gt;Mxe.Data[2] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[2];
+	  MsgPtr-&gt;Mxe.Data[3] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[3];
+	  MsgPtr-&gt;Mxe.Data[4] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[4];
+	  MsgPtr-&gt;Mxe.Data[5] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[5];
+	  MsgPtr-&gt;Mxe.Data[6] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[6];
+	  MsgPtr-&gt;Mxe.Data[7] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[7];
+
+	  return 1;
+	}else
+	{
+	  return 0;//没有消息
+	}
+}
+</code></pre>
+
+<h1 id="程序说明">程序说明</h1>
+
+<p>J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)函数<strong>函数必须存在返回</strong>。</p>
 
             </article>
 
             <ul class="pager blog-pager">
                 
                 <li class="previous">
-                    <a href="https://carsocket.cn/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/" data-toggle="tooltip" data-placement="top" title="利用J1939传输8字节以上的数据（TP长帧传输）">&larr; Previous Post</a>
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析5">&larr; Previous Post</a>
                 </li>
                  
                 <li class="next">
-                    <a href="https://carsocket.cn/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/" data-toggle="tooltip" data-placement="top" title="J1939socket_v2.1.0的移植，示例，API">Next Post &rarr;</a>
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析3">Next Post &rarr;</a>
                 </li>
                 
             </ul>
@@ -312,15 +426,15 @@ github下载地址：<a href="https://github.com/XeiTongXueFlyMe/J1939">https://
                 <h2>See Also</h2>
                 <ul>
                     
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/">J1939socket_v1.1.0源代码分析3</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
+                    
                     <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%8C-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D/">J1939socket_v1.1.0移植</a></li>
                     
                     <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
                     
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
-                    
-                    <li><a href="/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/">利用J1939传输8字节以上的数据（TP长帧传输）</a></li>
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
                     
                 </ul>
                 
@@ -333,10 +447,12 @@ github下载地址：<a href="https://github.com/XeiTongXueFlyMe/J1939">https://
     <section id="datecount">
         <h4 id="date"> Wed Jan 31, 2018</h4>
     </section>
-    <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+    <h5 id="wc">1300 Words|Read in about 3 Min</h5>
     <h5 id="tags">Tags: 
         
         <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
     </h5>
 </div>
 

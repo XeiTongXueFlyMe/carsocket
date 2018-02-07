@@ -5,10 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> Categories - </title>
+  <title> 利用J1939传输8字节以上的数据（TP长帧传输） - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="Categories" />
-  <meta name="twitter:title" content="Categories" />
+  <meta property="og:title" content="利用J1939传输8字节以上的数据（TP长帧传输）" />
+  <meta name="twitter:title" content="利用J1939传输8字节以上的数据（TP长帧传输）" />
+  <meta name="description" content="简介 在J1939源文档中，文件J1939-21(数据链路层)有着这样的规定，数据链路层具有传输长度大于8字节小于1785字节的传输协议，我们">
+  <meta property="og:description" content="简介 在J1939源文档中，文件J1939-21(数据链路层)有着这样的规定，数据链路层具有传输长度大于8字节小于1785字节的传输协议，我们">
+  <meta name="twitter:description" content="简介 在J1939源文档中，文件J1939-21(数据链路层)有着这样的规定，数据链路层具有传输长度大于8字节小于1785字节的传输协议，我们">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
@@ -16,12 +19,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
   <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
-  <meta property="og:url" content="https://carsocket.cn/categories/" />
+  <meta property="og:url" content="https://carsocket.cn/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
   <meta name="generator" content="Hugo 0.34" />
-  <link rel="canonical" href="https://carsocket.cn/categories/" />
+  <link rel="canonical" href="https://carsocket.cn/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
@@ -206,8 +209,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="categories-heading">
-                <h1 align="center">Categories</h1>
+            <div class="posts-heading">
+                <h1 align="center">利用J1939传输8字节以上的数据（TP长帧传输）</h1>
                 
                 
             </div>
@@ -219,26 +222,169 @@
 
 
     
-  
-  <div class="container" role="main">
-    <article class="post-preview">
-      <div class="list-group col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-      
-      <a href="https://carsocket.cn/categories/j1939/" class="list-group-item">
-          j1939<span class="badge">10</span></a>
-      
-      <a href="https://carsocket.cn/categories/obd/" class="list-group-item">
-          obd<span class="badge">3</span></a>
-      
-      <a href="https://carsocket.cn/categories/15765/" class="list-group-item">
-          15765<span class="badge">1</span></a>
-      
-      <a href="https://carsocket.cn/categories/kwp2000/" class="list-group-item">
-          kwp2000<span class="badge">1</span></a>
-      
-      </div>
-    </article>
-  </div>
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">900 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="简介">简介</h1>
+
+<p>在J1939源文档中，文件<strong>J1939-21</strong>(数据链路层)有着这样的规定，数据链路层具有传输长度大于8字节小于1785字节的传输协议，我们对这个传输协议叫做 <strong>TP</strong> .它将细分为两个功能：消息的拆装和重组，还有连接管理，这个知识可以参考<strong>J1939-21</strong>源文档学习。下面将阐述对<strong>J1939协议栈</strong>的<strong>TP</strong>功能的应用示例。</p>
+
+<h1 id="知识假设">知识假设</h1>
+
+<ol>
+<li>我们已经将最新的J1939协议栈从github上下载，并且成功的移植到我们的芯片！</li>
+<li>我们有两个独立运行ECU（电子控制单元），将地址配置为 0XF1 ,0XF4.其他的配置均正确。</li>
+<li>节点为0xf4的为发送者</li>
+<li>节点为0xf1的为接受者</li>
+<li>我们要将数据 data[100] ={1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7};的100字节的数据在两个ECU之间传输。</li>
+<li>两节点之间的数据传输的监测，我们采用周立功的CANPro.</li>
+<li>我采用协议栈的轮询模式（移植简单），采用J939socket_v1.1.0版本</li>
+</ol>
+
+<h1 id="测试代码">测试代码</h1>
+
+<ol>
+<li>发送节点0XF4，TP发送示例</li>
+</ol>
+
+<p><c></p>
+
+<pre><code>void thread_j1939 (void const *argument)
+{
+    int _b=1;
+    char data[100] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7};
+    J1939_Initialization( TRUE );
+
+    // 等待地址声明超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+
+    while(1)
+    {
+        if(_b &gt;1000)  //10秒发一次数据
+        {
+            _b = 0 ;
+            /*发送一个长帧 data*/
+            while(J1939_TP_TX_Message(65259,0XF1,data,sizeof(data))==RC_SUCCESS)
+              J1939_Poll(5);
+        }
+        _b++;
+        osDelay(10);    //10毫秒的延时
+        J1939_Poll(20);
+    }
+}   
+</code></pre>
+
+<p></c>
+&gt; 可以将thread_j1939 （）理解为 main(),这里使用的RTOS实时操作系统，CAN的初始化已在其他的线程里实现</p>
+
+<ol>
+<li>接受节点0XF1，TP接受示例</li>
+</ol>
+
+<p><c></p>
+
+<pre><code>void thread_CANComm (void const *argument)
+{
+    char data[100];
+    J1939_Initialization( TRUE );
+    // 等待地址声明超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+          J1939_Poll(5);
+    //地址已经声明好（设备已挂载到总线上）
+    while(1)
+    {
+         /*读取TP接受数据到data数组*/
+        while(J1939_TP_RX_Message(data,sizeof(data))==RC_SUCCESS)
+            J1939_Poll(5);
+
+        osDelay(10); //基本单位为10ms;
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+
+<p></c>
+&gt; 可以将thread_CANComm （）理解为 main(),这里使用的RTOS实时操作系统，CAN的初始化已在其他的线程里实现</p>
+
+<h1 id="小结">小结</h1>
+
+<p>虽然J1939协议栈在数据链路层规定，TP一次性最大只能传输1785字节，可满足大多数的使用。但是我们可以在不破坏J1939协议栈的前提下，在应用层编写是可以达到更高的传输字节。比如说：
+1784 * 254 或者 1783 * 65535 .</p>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                 
+                <li class="next">
+                    <a href="https://carsocket.cn/posts/j1939/j1939%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="J1939入门">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/">J1939socket_v1.1.0源代码分析4</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/">J1939socket_v1.1.0应用示例</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">900 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
 
     <footer>
   <div class="container">
