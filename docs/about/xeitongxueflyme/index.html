@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> J1939socket_v1.1.0源代码分析4 - </title>
+  <title> 关于XeiTongXueFlyMe - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="J1939socket_v1.1.0源代码分析4" />
-  <meta name="twitter:title" content="J1939socket_v1.1.0源代码分析4" />
-  <meta name="description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
-  <meta property="og:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
-  <meta name="twitter:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议http://blog.csdn.net/xietongxuefl">
+  <meta property="og:title" content="关于XeiTongXueFlyMe" />
+  <meta name="twitter:title" content="关于XeiTongXueFlyMe" />
+  <meta name="description" content="姓名: XeiTongXueFlyMe 2017年毕业于 电子科学与技术（微电子） 专业 从硬件出生，偏偏做了嵌入式，热爱服务器前后端开发，却被忽悠到了汽车电子（2014 ~ 201">
+  <meta property="og:description" content="姓名: XeiTongXueFlyMe 2017年毕业于 电子科学与技术（微电子） 专业 从硬件出生，偏偏做了嵌入式，热爱服务器前后端开发，却被忽悠到了汽车电子（2014 ~ 201">
+  <meta name="twitter:description" content="姓名: XeiTongXueFlyMe 2017年毕业于 电子科学与技术（微电子） 专业 从硬件出生，偏偏做了嵌入式，热爱服务器前后端开发，却被忽悠到了汽车电子（2014 ~ 201">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
@@ -19,12 +19,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
   <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
-  <meta property="og:url" content="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/" />
+  <meta property="og:url" content="https://carsocket.cn/about/xeitongxueflyme/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
   <meta name="generator" content="Hugo 0.34" />
-  <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/" />
+  <link rel="canonical" href="https://carsocket.cn/about/xeitongxueflyme/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
@@ -209,8 +209,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="posts-heading">
-                <h1 align="center">J1939socket_v1.1.0源代码分析4</h1>
+            <div class="about-heading">
+                <h1 align="center">关于XeiTongXueFlyMe</h1>
                 
                 
             </div>
@@ -230,214 +230,45 @@
             
 <div>
     <section id="datecount">
-        <h4 id="date"> Wed Jan 31, 2018</h4>
+        <h4 id="date"> Mon Jan 1, 0001</h4>
     </section>
-    <h5 id="wc">1300 Words|Read in about 3 Min</h5>
+    <h5 id="wc">500 Words|Read in about 1 Min</h5>
     <h5 id="tags">Tags: 
-        
-        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
-        
-        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
     </h5>
 </div>
 
             
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
-                
-
-<h1 id="预备知识">预备知识</h1>
+                <ul>
+<li><p>姓名: XeiTongXueFlyMe</p>
 
 <ol>
-<li>熟悉CAN2.0B协议，及相关硬件驱动开发</li>
+<li>2017年毕业于 电子科学与技术（微电子） 专业</li>
+<li>从硬件出生，偏偏做了嵌入式，热爱服务器前后端开发，却被忽悠到了汽车电子（2014 ~ 2017年）。</li>
+<li>一个什么都不精通，但都有所了解的伪全栈工程师。</li>
+</ol></li>
 
-<li><p>熟悉SAE J1939协议<a href="http://blog.csdn.net/xietongxueflyme/article/details/74276702/">http://blog.csdn.net/xietongxueflyme/article/details/74276702/</a></p>
+<li><p>爱好：编程，嵌入式方案设计，程序优化（代码重构），开源，LOL，穿越火线。</p></li>
 
-<h1 id="函数名">函数名</h1>
+<li><p>编程语言: 熟练 ARM汇编，擅长: C/C++, Golang。</p></li>
 
-<table>
-<thead>
-<tr>
-<th align="center">函数名</th>
-<th align="center">类型</th>
-<th align="center">注解</th>
-</tr>
-</thead>
+<li><p>擅长技术领域: 主攻嵌入式实时操作系统内核编写, 微模块架构（嵌入式软件架构），高并发接口设计，各类单片机编程（8，16，32位），汽车通信矩阵（汽车通信协议），RPC架构，分布式，thirft架构及其接口。微服务，高并发和高性能计算。也熟练QT编程。</p></li>
 
-<tbody>
-<tr>
-<td align="center">J1939_CAN_Receive（）</td>
-<td align="center">与CAN驱动的接口</td>
-<td align="center">将设备CAN中的数据取出，存入J1939_MESSAGE结构体中，如果没有数据，返回0</td>
-</tr>
-</tbody>
-</table></li>
-</ol>
+<li><p>涉及过的技术领域： 数字电路的硬件设计（熟练 Altium Designer），开关电源设计，PLC，FPGA等。</p></li>
 
-<h1 id="函数功能">函数功能</h1>
+<li><p>偶像： 林纳斯·托瓦兹 ， 我老婆。</p></li>
 
-<p>基于SAE J1939协议，读取CAN驱动的数据，如果没有数据，返回0，否则将设备CAN中的数据取出，存入J1939_MESSAGE结构体中，返回1.</p>
-
-<h1 id="函数参数">函数参数</h1>
-
-<blockquote>
-<p>读取CAN驱动的数据，如果没有数据，返回0, 否则返回1.<strong>函数必须返回</strong></p>
-</blockquote>
-
-<pre><code>/*
-*输入：J1939_MESSAGE *MsgPtr 数据要存入的内存的指针
-*输出： 
-*说明：读取CAN驱动的数据，如果没有数据，返回0
-		将设备CAN中的数据取出，存入J1939_MESSAGE结构体中
-*/
-int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
-{
-	if ( ) //判断有没有新的数据
-	{
-	  // 清除接受标识位
-	  ;
-	  // 读取数据
-	  ;
-	  //将29位标志位（can_identifier）写入J1939的结构中
-	  _id = XXX; //假如_id等于读取CAN驱动中的ID
-	  MsgPtr-&gt;Array[0] = _id&gt;&gt;(8*3);
-	  MsgPtr-&gt;Array[1] = _id&gt;&gt;(8*2);
-	  MsgPtr-&gt;Array[2] = _id&gt;&gt;(8*1);
-	  MsgPtr-&gt;Array[3] = _id&gt;&gt;(8*0);
-	  //读取数据长度
-	  MsgPtr-&gt;Mxe.DataLength = XXXXXXX;
-	  if (MsgPtr-&gt;Mxe.DataLength &gt; 8)
-		  MsgPtr-&gt;Mxe.DataLength = 8;
-	  //读取数据
-	  MsgPtr-&gt;Mxe.Data[0] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[1] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[2] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[3] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[4] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[5] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[6] = XXXXXX;
-	  MsgPtr-&gt;Mxe.Data[7] = XXXXXX;
-
-	  return 1;
-	}else
-	{
-		return 0;//没有消息
-	}
-}
-</code></pre>
-
-<p>J1939_MESSAGE *MsgPtr 数据要存入的内存的指针，J1939_MESSAGE 消息结构体在J1939.h中，按J1939的收发格式做的。</p>
-
-<pre><code>#define J1939_MSG_LENGTH	5  //消息长度
-#define J1939_DATA_LENGTH	8  //数据长度
-union J1939_MESSAGE_UNION 
-{ 
-	struct   me 
-	{ 
-		unsigned int	DataPage			: 1; 
-		unsigned int	Res					: 1; 
-		unsigned int	Priority			: 3; 
-		unsigned int	PDUFormat_Top		: 3;
-		unsigned char	PDUFormat;					
-		unsigned char	PDUSpecific; 
-		unsigned char	SourceAddress; 
-		unsigned int	DataLength 			: 4; 
-		unsigned int	RTR					: 4;	
-		unsigned char	Data[J1939_DATA_LENGTH]; 
-	};
-	struct me Mxe;
-	unsigned char		Array[J1939_MSG_LENGTH + J1939_DATA_LENGTH]; 
-}; 
-</code></pre>
-
-<p>判断是否有数据接受，有就存下数据返回1，没有返回0，<strong>函数必须返回</strong>，判断函数你的CAN驱动得支持。
-&gt; <strong>清除接受标识位</strong>这个步根据设计可要可不要，举个例子，我在XMC4500上移植，当有新的消息来时，标识位置位，可读取数据，但是不清除标识位，再次进入J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)时，判断函数认为又有新消息（实际没有），读取数据后返回1.所以，<strong>我的移植必须要清除标识位</strong>（用来判断有没有数据）。</p>
-
-<h1 id="移植示例">移植示例</h1>
-
-<blockquote>
-<p>采用英飞凌XMC4500,对can驱动层，提取了CAN结构体，CAN_NODE3_DEBUG.lmobj_ptr[0]。将J1939协议自带的结构体 J1939_MESSAGE 中的数据写入CAN的结构体中。</p>
-</blockquote>
-
-<pre><code>/*
-*输入：J1939_MESSAGE *MsgPtr 数据要存入的内存的指针
-*输出： 
-*说明：读取CAN驱动的数据，如果没有数据，返回0
-		将设备CAN中的数据取出，存入J1939_MESSAGE结构体中
-*/
-int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
-{
-	uint32_t receive_status=0;
-	uint32_t _id=0;
-	receive_status = CAN_NODE_MO_GetStatus( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
-	if ( receive_status &amp; XMC_CAN_MO_STATUS_RX_PENDING)  //XMC_CAN_MO_STATUS_NEW_DATA
-	{
-	  // 清除接受标识位
-	  CAN_NODE_MO_ClearStatus(((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0],XMC_CAN_MO_RESET_STATUS_RX_PENDING);
-	  // 读取数据
-	  CAN_NODE_MO_Receive( ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]);
-	  //将29位标志位（can_identifier）写入J1939的结构中
-	  _id = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_identifier;
-	  MsgPtr-&gt;Array[0] = _id&gt;&gt;(8*3);
-	  MsgPtr-&gt;Array[1] = _id&gt;&gt;(8*2);
-	  MsgPtr-&gt;Array[2] = _id&gt;&gt;(8*1);
-	  MsgPtr-&gt;Array[3] = _id&gt;&gt;(8*0);
-	  //读取数据长度
-	  MsgPtr-&gt;Mxe.DataLength = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_length;
-	  if (MsgPtr-&gt;Mxe.DataLength &gt; 8)
-		  MsgPtr-&gt;Mxe.DataLength = 8;
-	  //读取数据
-	  MsgPtr-&gt;Mxe.Data[0] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[0];
-	  MsgPtr-&gt;Mxe.Data[1] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[1];
-	  MsgPtr-&gt;Mxe.Data[2] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[2];
-	  MsgPtr-&gt;Mxe.Data[3] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[3];
-	  MsgPtr-&gt;Mxe.Data[4] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[4];
-	  MsgPtr-&gt;Mxe.Data[5] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[5];
-	  MsgPtr-&gt;Mxe.Data[6] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[6];
-	  MsgPtr-&gt;Mxe.Data[7] = ((CAN_NODE_t *)&amp;CAN_NODE3_DEBUG)-&gt;lmobj_ptr[0]-&gt;mo_ptr-&gt;can_data_byte[7];
-
-	  return 1;
-	}else
-	{
-	  return 0;//没有消息
-	}
-}
-</code></pre>
-
-<h1 id="程序说明">程序说明</h1>
-
-<p>J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)函数<strong>函数必须存在返回</strong>。</p>
+<li><p>自我评价：至2017年底，2018年初，已有两年的程序实际开发经验（非小白阶段和进阶学习阶段），和多个大型项目开发经验。喜爱从事程序开发，产品软件架构设计。最值得自己骄傲的事是身体健康，战斗力强。</p></li>
+</ul>
 
             </article>
 
             <ul class="pager blog-pager">
-                
-                <li class="previous">
-                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析5">&larr; Previous Post</a>
-                </li>
                  
-                <li class="next">
-                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析3">Next Post &rarr;</a>
-                </li>
-                
             </ul>
             
             <div>
                  
-                <h2>See Also</h2>
-                <ul>
-                    
-                    <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/">J1939socket_v1.1.0应用示例</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
-                    
-                </ul>
-                
             </div>
             
             
@@ -445,14 +276,10 @@ int J1939_CAN_Receive(J1939_MESSAGE *MsgPtr)
             
 <div>
     <section id="datecount">
-        <h4 id="date"> Wed Jan 31, 2018</h4>
+        <h4 id="date"> Mon Jan 1, 0001</h4>
     </section>
-    <h5 id="wc">1300 Words|Read in about 3 Min</h5>
+    <h5 id="wc">500 Words|Read in about 1 Min</h5>
     <h5 id="tags">Tags: 
-        
-        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
-        
-        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
     </h5>
 </div>
 

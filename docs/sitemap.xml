@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://carsocket.cn/about/about/</loc>
+    <loc>https://carsocket.cn/about/xeitongxueflyme/</loc>
   </url>
   
   <url>
@@ -82,13 +82,13 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/15765/</loc>
+    <loc>https://carsocket.cn/categories/15765/</loc>
     <lastmod>2018-02-03T10:15:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/15765/</loc>
+    <loc>https://carsocket.cn/tags/15765/</loc>
     <lastmod>2018-02-03T10:15:45+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -111,13 +111,13 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/j1939/</loc>
+    <loc>https://carsocket.cn/categories/j1939/</loc>
     <lastmod>2018-01-31T15:16:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/j1939/</loc>
+    <loc>https://carsocket.cn/tags/j1939/</loc>
     <lastmod>2018-01-31T15:16:36+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -129,25 +129,25 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/kwp2000/</loc>
-    <lastmod>2018-02-03T15:09:36+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://carsocket.cn/categories/kwp2000/</loc>
     <lastmod>2018-02-03T15:09:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/obd/</loc>
-    <lastmod>2018-02-05T19:57:34+08:00</lastmod>
+    <loc>https://carsocket.cn/tags/kwp2000/</loc>
+    <lastmod>2018-02-03T15:09:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://carsocket.cn/categories/obd/</loc>
+    <lastmod>2018-02-05T19:57:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://carsocket.cn/tags/obd/</loc>
     <lastmod>2018-02-05T19:57:34+08:00</lastmod>
     <priority>0</priority>
   </url>
