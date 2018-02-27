@@ -31,54 +31,52 @@ desc = "Cloud Computing"
 
 [[menu.main]]
     identifier = "Categories"
-    name = "car protocol "
+    name = "文章分类"
     weight = 1
-    
+[[menu.main]]
+    parent = "Categories"
+    name = "嵌入式软件框架"
+    url = "categories/micro"
+    weight = 6  
 [[menu.main]]
     parent = "Categories"
     name = "SAE j1939"
     url = "categories/j1939"
-    weight = 1
-
+    weight = 7
 [[menu.main]]
     parent = "Categories"
     name = "ISO 15765"
     url = "categories/15765"
-    weight = 2
-
+    weight = 8
 [[menu.main]]
     parent = "Categories"
     name = "ISO 14229"
     url = "categories/14229"
-    weight = 3
-
+    weight = 9
 [[menu.main]]
     parent = "Categories"
     name = "OBD"
     url = "categories/obd"
-    weight = 4
+    weight = 10
 [[menu.main]]
     parent = "Categories"
     name = "KWP2000"
     url = "categories/kwp2000"
-    weight = 5
+    weight = 11
+
 [[menu.main]]
-    name = "开源协议栈"
+    name = "开源项目"
     weight = 2
 [[menu.main]]
-    parent = "开源协议栈"
+    parent = "开源项目"
     name = "J1939协议栈下载"
     url = "https://github.com/XeiTongXueFlyMe/J1939/releases"
     weight = 1
 [[menu.main]]
-    name = "Books"
-    weight = 3
-
-[[menu.main]]
-    parent = "Books"
+    parent = "开源项目"
     name = "J1939协议栈说明书"
     url = "https://xeitongxueflyme.github.io/j1939doc.github.io/"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     name = "Tags"

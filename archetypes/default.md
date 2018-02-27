@@ -2,9 +2,9 @@
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: false
-keywords: [ "j1939","SAE J1939"]
-categories: "j1939"
-tags: [ "j1939" ]
+keywords: [ "Micro","嵌入式设计架构"]
+categories: "micro"
+tags: [ "Micro" ]
 
 # you can close something for this content if you open it in config.toml.
 comment: true

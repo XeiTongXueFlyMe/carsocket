@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> Kwp2000快速入门 - </title>
+  <title> Micro_2_项目管理 - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="Kwp2000快速入门" />
-  <meta name="twitter:title" content="Kwp2000快速入门" />
-  <meta name="description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
-  <meta property="og:description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
-  <meta name="twitter:description" content="kwp2000入门 欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务">
+  <meta property="og:title" content="Micro_2_项目管理" />
+  <meta name="twitter:title" content="Micro_2_项目管理" />
+  <meta name="description" content="由于嵌入式设计，通常都有集成好的IDE，比如说使用STM32系列芯片，可以用KEIL，IAR等交叉编译IDE,而且这些工具都有编辑，编译，调">
+  <meta property="og:description" content="由于嵌入式设计，通常都有集成好的IDE，比如说使用STM32系列芯片，可以用KEIL，IAR等交叉编译IDE,而且这些工具都有编辑，编译，调">
+  <meta name="twitter:description" content="由于嵌入式设计，通常都有集成好的IDE，比如说使用STM32系列芯片，可以用KEIL，IAR等交叉编译IDE,而且这些工具都有编辑，编译，调">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
@@ -19,12 +19,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
   <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
-  <meta property="og:url" content="https://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <meta property="og:url" content="https://carsocket.cn/posts/micro/micro_2_%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
   <meta name="generator" content="Hugo 0.34" />
-  <link rel="canonical" href="https://carsocket.cn/posts/kwp2000/kwp2000%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+  <link rel="canonical" href="https://carsocket.cn/posts/micro/micro_2_%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
@@ -204,7 +204,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="posts-heading">
-                <h1 align="center">Kwp2000快速入门</h1>
+                <h1 align="center">Micro_2_项目管理</h1>
                 
                 
             </div>
@@ -224,14 +224,12 @@
             
 <div>
     <section id="datecount">
-        <h4 id="date"> Sat Feb 3, 2018</h4>
+        <h4 id="date"> Tue Feb 27, 2018</h4>
     </section>
-    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="wc">1600 Words|Read in about 4 Min</h5>
     <h5 id="tags">Tags: 
         
-        <a href="https://carsocket.cn/tags/kwp2000/">kwp2000</a> &nbsp;
-        
-        <a href="https://carsocket.cn/tags/eobd/">EOBD</a> &nbsp;
+        <a href="https://carsocket.cn/tags/micro/">Micro</a> &nbsp;
     </h5>
 </div>
 
@@ -239,117 +237,125 @@
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
                 
 
-<h1 id="kwp2000入门">kwp2000入门</h1>
+<hr />
 
-<p>欧洲汽车领域广泛使用的一种车载诊断协议标准是KWP2000（Keyword Protocol 2000），该协议实现了一套完整的车载诊断服务，并且满足E-OBD（European On Board Diagnose）标准。KWP2000最初是基于K线的诊断协议（ISO 14230），近年来欧洲汽车领域广泛采用了基于CAN总线的KWP2000（ISO 15765），而基于K线的KWP2000物理层和数据链路层协议将逐步被淘汰。</p>
+<ul>
+<li>由于嵌入式设计，通常都有集成好的IDE，比如说使用STM32系列芯片，可以用KEIL，IAR等交叉编译IDE,而且这些工具都有编辑，编译，调试功能，那我们还需要其他的编辑工具不？答案是肯定的，一个好的工具能给程序员带来很好的习惯，带来不一样的灵感。</li>
+</ul>
+
+<p><img src="http://res.cloudinary.com/dynhsbwph/image/upload/v1519713279/progress.jpg" alt="progress" /></p>
 
 <hr />
 
-<h1 id="基于k线和can线的kwp2000协议osi模型">基于K线和CAN线的KWP2000协议OSI模型</h1>
-
-<hr />
-
-<table>
-<thead>
-<tr>
-<th>OSI模型</th>
-<th>K线</th>
-<th>CAN线</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>应用层</td>
-<td>ISO 14230-3</td>
-<td>ISO 15765-3</td>
-</tr>
-
-<tr>
-<td>表示层</td>
-<td>无</td>
-<td>无</td>
-</tr>
-
-<tr>
-<td>会话层</td>
-<td>无</td>
-<td>无</td>
-</tr>
-
-<tr>
-<td>传输层</td>
-<td>无</td>
-<td>无</td>
-</tr>
-
-<tr>
-<td>链路层</td>
-<td>无</td>
-<td>ISO 15765-2</td>
-</tr>
-
-<tr>
-<td>网络层</td>
-<td>ISO 14230-2</td>
-<td>ISO 11898-1</td>
-</tr>
-
-<tr>
-<td>物理层</td>
-<td>ISO 14230-1，ISO 9141-2</td>
-<td>自定（双绞线等）</td>
-</tr>
-</tbody>
-</table>
-
-<hr />
+<h2 id="一个好的项目管理必须要有好的工具-下面将来说说工具">一个好的项目管理必须要有好的工具。下面将来说说工具。</h2>
 
 <ol>
-<li>ISO 14230-1规定了KWP2000协议的物理层规范（K线、L线），它在ISO 9141-2的基础上把数据交换系统扩展到了24V电压系统。</li>
-<li>ISO 14230-2规定了KWP2000的数据链路层协议，包括报文结构、初始化过程、通讯连接管理、定时参数和错误处理等内容。</li>
-<li>ISO 15765-3协议，该协议完全兼容基于K线的应用层协议14230-3</li>
-<li>ISO/WD 15765-1～15765-4，该协议把KWP2000应用层的诊断服务移植到CAN总线上，基于CAN总线的KWP2000协议实际上指的就是ISO 15765-1～15765-4。</li>
+<li>编译工具</li>
+<li>编辑工具</li>
+<li>代码版本管理工具</li>
+<li>团队协作工具</li>
+</ol>
+
+<h2 id="来谈谈编译工具">来谈谈编译工具。</h2>
+
+<p>我们通常采用的开发软件（keil,IAR,DAVE等），集成了编译，编辑功能。那我们怎么去选取编译器呢，一般用厂家推存的，如果有足够的经验，做一个编译工具也不是难事（有兴趣的，可以百度GCC工具链制作与使用）。</p>
+
+<h2 id="来谈谈编辑工具">来谈谈编辑工具。</h2>
+
+<ul>
+<li><p>一个有经验有洁癖的程序员，都有一个爱不释手的编辑工具，什么是编辑工具，windos的文本编辑器和vim，就是典型的编辑器。当然我们采用IDE是集成编辑功能的，编写代码这些工具都可以，但是代码的重构，专用的编辑器却体现了自己的独到之处。</p></li>
+
+<li><p>被大家公认的，一段好的代码，写起了过后，还需要不断的重构。然而重构，一个好的工具能帮程序员省不少时间。</p></li>
+
+<li><p>如果只让我推存一个编辑工具，我会推荐大家使用 Visual Studio Code。当然大家都有自己喜欢的编辑工具。至少我认为Visual Studio Code能让我提高N倍的开发效率，不在使用鼠标。后面也会在代码质量章节，展示Visual Studio Code的代码重构的强大。</p></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>放一张图，来看看Vscode的轻便性，Vscode轻量但不精简，具体查看官网的简绍。一个值得使用的编辑器。无论你采用什么平台（window，还是Linux），开发什么语言，VScode都值得你拥有。</li>
+</ul>
+
+<p><img src="http://res.cloudinary.com/dynhsbwph/image/upload/v1519713288/vscode.png" alt="vscode" /></p>
+
+<hr />
+
+<h2 id="来谈谈代码版本管理工具">来谈谈代码版本管理工具</h2>
+
+<h3 id="毋庸置疑-首选git">毋庸置疑，首选git</h3>
+
+<hr />
+
+<p><img src="http://res.cloudinary.com/dynhsbwph/image/upload/v1519714055/git.jpg" alt="git" /></p>
+
+<p>不要问为什么，全世界都在用的版本管理，如果刚接触git，建议学习廖雪峰老师的git入门教程，<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+
+<hr />
+
+<h3 id="git作为强大的分布式代码管理工具-其的衍生产品也有很多">git作为强大的分布式代码管理工具，其的衍生产品也有很多。</h3>
+
+<ul>
+<li><p>世界的大佬们总是喜欢站在巨人的肩上办事，于是出现了，git-gui,git-bash(window平台集成的命令行工具，集成了SSH等)，gitlab,github,gogs，TortoiseGit等超级好用的工具。</p></li>
+
+<li><p>后面将用一个章节专门讲，怎么搭建局域网内部git服务器（标准的公司会选择私有GIT服务器），才入门的，建议学习和使用github来做代码的版本管理。现在许多公司，把有github账号并为大型项目做出贡献，作为面试的加分项。</p></li>
+
+<li><p>不了解git的，建议百度了解一下git，这里就不阐述git的强大之处。</p></li>
+</ul>
+
+<h4 id="micro选择会选择怎样的git版本管理框架">Micro选择会选择怎样的git版本管理框架？</h4>
+
+<ul>
+<li>Micro从翻译来讲，微，可以理解为轻量级。为了大家入门尽可能简单些，但是功能又不能精简。于是Micro采用如下的git版本管理框架。公司团队强大的可以考虑使用gitlab。</li>
+</ul>
+
+<ol>
+<li>git</li>
+<li>TortoiseGit</li>
+<li>gogs</li>
 </ol>
 
 <blockquote>
-<p>K线的报文包括报文头、数据域和校验和三部分，其中报文头包含格式字节、目标地址（可选）、源地址（可选）和附加长度信息（可选），具体格式参阅ISO 14230-2。</p>
-
-<p>can线规定了网络层的格式（N_PDU），格式包括地址信息，协议控制信息，数据域（N_AI,N_PCI,N_DATA）。应用层协议规定了四种服务数据结构，<Service_Name>.Request、<Service_Name>.Indication、<Service_Name>.Response和<Service_Name>.Confirm，分别用于诊断设备（Tester）的服务请求、ECU的服务指示、ECU的服务响应和Tester的服务确认。这些数据结构中包含了地址信息、服务请求ID和服务请求参数等内容。</p>
+<p>后面会专门说怎么使用这样的git版本管理框架，和这样的框架有什么好处？给团队带来了哪些方便的功能呢？</p>
 </blockquote>
 
-<h1 id="kwp2000数据连接口">kwp2000数据连接口</h1>
+<h2 id="来谈谈团队协作工具">来谈谈团队协作工具</h2>
 
-<h2 id="根据iso-dis-15031-3中相关内容-dlc是一个如下16针的插座">根据ISO DIS 15031–3中相关内容，DLC是一个如下16针的插座</h2>
-
-<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623820/OBDjiekoutu_cmew5c.png" alt="OBD插座图" /></p>
-
-<h2 id="各个针脚定义如下">各个针脚定义如下：</h2>
-
-<p><img src="http://res.cloudinary.com/xeitongxueflyme/image/upload/v1517623808/OBDJIEKOUMIAOshu_egld52.png" alt="OBD插座图" /></p>
+<h3 id="doxygen是不错的技术文档编写工具">doxygen是不错的技术文档编写工具。</h3>
 
 <blockquote>
-<p>1, 3, 8, 9, 11, 12 和13 未做分配，可由车辆制造厂定义。</p>
-
-<p>2, 6, 7, 10, 14 和 15 使用作诊断通讯的。根据实际使用的通讯协议的不同，它们往往不会都被使用，为使用的可由车辆制造厂定义。</p>
+<p>产品的开发，总会给我们带来奇妙的问题，特别是团队的协作，到底该不该写技术文档，无论是一个人开发，还是10多个人开发，其实技术文档是必不可少的，让人头痛的是，软件的版本更新周期快，然而技术文档的编写得跟上才行，怎么办呢？不必苦恼，我们遇到的问题，计算机前辈也会遇，他们的早帮我们解决了这些问题，推荐一个API编写的工具。</p>
 </blockquote>
+
+<ul>
+<li><p>工具的下载地址为：<a href="http://www.stack.nl/~dimitri/doxygen/index.html">http://www.stack.nl/~dimitri/doxygen/index.html</a></p></li>
+
+<li><p>用 doxygen 制作的API文档示例：
+<a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">https://xeitongxueflyme.github.io/j1939doc.github.io/</a></p></li>
+
+<li><p>建议大家多看看doxygen的使用博客，看看大家是怎么用的。</p></li>
+</ul>
+
+<h3 id="beyond-compare是不错的代码比较器">Beyond Compare是不错的代码比较器。</h3>
 
             </article>
 
             <ul class="pager blog-pager">
                 
                 <li class="previous">
-                    <a href="https://carsocket.cn/posts/obd/obd%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="Obd快速入门">&larr; Previous Post</a>
+                    <a href="https://carsocket.cn/posts/micro/micro_1_%E7%AE%80%E4%BB%8B/" data-toggle="tooltip" data-placement="top" title="Micro_1_简介">&larr; Previous Post</a>
                 </li>
                  
-                <li class="next">
-                    <a href="https://carsocket.cn/posts/obd/obd%E5%9C%A8%E5%9B%BD%E5%86%85%E7%9A%84%E6%83%85%E5%86%B5/" data-toggle="tooltip" data-placement="top" title="Obd在国内的情况">Next Post &rarr;</a>
-                </li>
-                
             </ul>
             
             <div>
                  
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/micro/micro_1_%E7%AE%80%E4%BB%8B/">Micro_1_简介</a></li>
+                    
+                </ul>
+                
             </div>
             
             
@@ -357,14 +363,12 @@
             
 <div>
     <section id="datecount">
-        <h4 id="date"> Sat Feb 3, 2018</h4>
+        <h4 id="date"> Tue Feb 27, 2018</h4>
     </section>
-    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="wc">1600 Words|Read in about 4 Min</h5>
     <h5 id="tags">Tags: 
         
-        <a href="https://carsocket.cn/tags/kwp2000/">kwp2000</a> &nbsp;
-        
-        <a href="https://carsocket.cn/tags/eobd/">EOBD</a> &nbsp;
+        <a href="https://carsocket.cn/tags/micro/">Micro</a> &nbsp;
     </h5>
 </div>
 
