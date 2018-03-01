@@ -96,3 +96,14 @@ https://xeitongxueflyme.github.io/j1939doc.github.io/
 
 ### Beyond Compare是不错的代码比较器。
 
+![beyang](http://res.cloudinary.com/dynhsbwph/image/upload/v1519894446/beyang.png)
+
+### 文本格式转换器
+
+* 经常我们阅读他人的代码时，我们的编辑器打开备注总是乱码。
+
+> 这个问题的原因，可能是编辑器保存的文本格式不同，建议使用UTF-8的格式。
+
+#### NotePad++ 是一个轻量级，不错的代码编辑器，有着强大的格式转换功能。所以可以当作格式转换器使用。
+
+![notepad](http://res.cloudinary.com/dynhsbwph/image/upload/v1519895036/notepad.png)
