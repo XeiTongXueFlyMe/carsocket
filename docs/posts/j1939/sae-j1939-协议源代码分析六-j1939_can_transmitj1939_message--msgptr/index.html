@@ -23,7 +23,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="XeiTongXueFlyMe" />
 
-  <meta name="generator" content="Hugo 0.34" />
+  <meta name="generator" content="Hugo 0.37.1" />
   <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/" />
   <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
   <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
@@ -278,40 +278,40 @@
 
 <pre><code>void J1939_CAN_Transmit(J1939_MESSAGE *MsgPtr)
 {
-	/*加载29位ID*/
-	ChangeGroupIDofLMO(can驱动的结构体，MsgPtr);
-	/*加载数据长度*/
-	;
-	/*加载数据*/
-	;
-	/*加载RTR*/
-	;
-	/*开始发送数据，调用CAN驱动的发送函数*/
-	;
+    /*加载29位ID*/
+    ChangeGroupIDofLMO(can驱动的结构体，MsgPtr);
+    /*加载数据长度*/
+    ;
+    /*加载数据*/
+    ;
+    /*加载RTR*/
+    ;
+    /*开始发送数据，调用CAN驱动的发送函数*/
+    ;
 }
 </code></pre>
 
 <p>J1939_MESSAGE *MsgPtr 为要传入的参数，J1939_MESSAGE 消息结构体在J1939.h中，按J1939的收发格式做的。</p>
 
-<pre><code>#define J1939_MSG_LENGTH	5  //消息长度
-#define J1939_DATA_LENGTH	8  //数据长度
+<pre><code>#define J1939_MSG_LENGTH    5  //消息长度
+#define J1939_DATA_LENGTH   8  //数据长度
 union J1939_MESSAGE_UNION 
 { 
-	struct   me 
-	{ 
-		unsigned int	DataPage			: 1; 
-		unsigned int	Res					: 1; 
-		unsigned int	Priority			: 3; 
-		unsigned int	PDUFormat_Top		: 3;
-		unsigned char	PDUFormat;					
-		unsigned char	PDUSpecific; 
-		unsigned char	SourceAddress; 
-		unsigned int	DataLength 			: 4; 
-		unsigned int	RTR					: 4;	
-		unsigned char	Data[J1939_DATA_LENGTH]; 
-	};
-	struct me Mxe;
-	unsigned char		Array[J1939_MSG_LENGTH + J1939_DATA_LENGTH]; 
+    struct   me 
+    { 
+        unsigned int    DataPage            : 1; 
+        unsigned int    Res                 : 1; 
+        unsigned int    Priority            : 3; 
+        unsigned int    PDUFormat_Top       : 3;
+        unsigned char   PDUFormat;                  
+        unsigned char   PDUSpecific; 
+        unsigned char   SourceAddress; 
+        unsigned int    DataLength          : 4; 
+        unsigned int    RTR                 : 4;    
+        unsigned char   Data[J1939_DATA_LENGTH]; 
+    };
+    struct me Mxe;
+    unsigned char       Array[J1939_MSG_LENGTH + J1939_DATA_LENGTH]; 
 }; 
 </code></pre>
 
@@ -332,30 +332,30 @@ union J1939_MESSAGE_UNION
 *输入： J1939_MESSAGE *MsgPtr ，协议要发送的消息，
 *输出： 
 *说明：从MsgPtr加载到CAN驱动自带的结构体中
-		将和ChangeGroupIDofLMO（）联合移植（可不这样设计）
-		先将传入函数的MsgPtr中的数据写到CAN的结构体（加载），调用CAN驱动的发送函数
+        将和ChangeGroupIDofLMO（）联合移植（可不这样设计）
+        先将传入函数的MsgPtr中的数据写到CAN的结构体（加载），调用CAN驱动的发送函数
 */
 void J1939_CAN_Transmit(J1939_MESSAGE *MsgPtr)
 {
-	CAN_NODE_LMO_t *lmo_ptr = CAN_NODE3_DEBUG.lmobj_ptr[1];
-	/*加载29位ID*/
-	ChangeGroupIDofLMO((const CAN_NODE_LMO_t * const)(CAN_NODE3_DEBUG.lmobj_ptr[1]),MsgPtr);
-	/*加载数据长度*/
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_length = MsgPtr-&gt;Mxe.DataLength;
-	CAN_NODE_MO_Init(lmo_ptr);
-	/*加载数据*/
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[0] = MsgPtr-&gt;Mxe.Data[0];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[1] = MsgPtr-&gt;Mxe.Data[1];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[2] = MsgPtr-&gt;Mxe.Data[2];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[3] = MsgPtr-&gt;Mxe.Data[3];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[4] = MsgPtr-&gt;Mxe.Data[4];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[5] = MsgPtr-&gt;Mxe.Data[5];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[6] = MsgPtr-&gt;Mxe.Data[6];
-	lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[7] = MsgPtr-&gt;Mxe.Data[7];
-	/*加载RTR*/
-	//我的CAN驱动中默认是0，1939-21协议要求也为零，所以不在配置
-	/*开始发送数据*/
-	(CAN_NODE_STATUS_t) CAN_NODE_MO_Transmit(lmo_ptr) ;
+    CAN_NODE_LMO_t *lmo_ptr = CAN_NODE3_DEBUG.lmobj_ptr[1];
+    /*加载29位ID*/
+    ChangeGroupIDofLMO((const CAN_NODE_LMO_t * const)(CAN_NODE3_DEBUG.lmobj_ptr[1]),MsgPtr);
+    /*加载数据长度*/
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_length = MsgPtr-&gt;Mxe.DataLength;
+    CAN_NODE_MO_Init(lmo_ptr);
+    /*加载数据*/
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[0] = MsgPtr-&gt;Mxe.Data[0];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[1] = MsgPtr-&gt;Mxe.Data[1];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[2] = MsgPtr-&gt;Mxe.Data[2];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[3] = MsgPtr-&gt;Mxe.Data[3];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[4] = MsgPtr-&gt;Mxe.Data[4];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[5] = MsgPtr-&gt;Mxe.Data[5];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[6] = MsgPtr-&gt;Mxe.Data[6];
+    lmo_ptr-&gt;mo_ptr-&gt;can_data_byte[7] = MsgPtr-&gt;Mxe.Data[7];
+    /*加载RTR*/
+    //我的CAN驱动中默认是0，1939-21协议要求也为零，所以不在配置
+    /*开始发送数据*/
+    (CAN_NODE_STATUS_t) CAN_NODE_MO_Transmit(lmo_ptr) ;
 }
 </code></pre>
 
@@ -382,15 +382,15 @@ void J1939_CAN_Transmit(J1939_MESSAGE *MsgPtr)
                 <h2>See Also</h2>
                 <ul>
                     
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AB-4%E5%A4%A7%E4%B8%AD%E6%96%AD%E4%BD%BF%E8%83%BD%E4%B8%8E%E4%BD%BF%E8%83%BD/">J1939socket_v1.1.0源代码分析5</a></li>
+                    
                     <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%83-j1939_can_receivej1939_message--msgptr/">J1939socket_v1.1.0源代码分析4</a></li>
-                    
-                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
-                    
-                    <li><a href="/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/">利用J1939传输8字节以上的数据（TP长帧传输）</a></li>
                     
                     <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/">J1939socket_v1.1.0应用示例</a></li>
                     
                     <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%8C-%E7%A8%8B%E5%BA%8F%E7%A7%BB%E6%A4%8D/">J1939socket_v1.1.0移植</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
                     
                 </ul>
                 
@@ -469,7 +469,7 @@ void J1939_CAN_Transmit(J1939_MESSAGE *MsgPtr)
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.34</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.37.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           &nbsp;&bull;&nbsp;[<a href="true"></a>]
         </p>
       </div>

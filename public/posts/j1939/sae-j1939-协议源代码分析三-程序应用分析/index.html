@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> J1939socket_v1.1.0应用示例 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="J1939socket_v1.1.0应用示例" />
+  <meta name="twitter:title" content="J1939socket_v1.1.0应用示例" />
+  <meta name="description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 J1939协议栈的功能 消息发送 消息广播 消息请求 消息确认，响应 群功能">
+  <meta property="og:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 J1939协议栈的功能 消息发送 消息广播 消息请求 消息确认，响应 群功能">
+  <meta name="twitter:description" content="预备知识 熟悉CAN2.0B协议，及相关硬件驱动开发 熟悉SAE J1939协议 J1939协议栈的功能 消息发送 消息广播 消息请求 消息确认，响应 群功能">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='https://carsocket.cn/panda.png' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://carsocket.cn/images/panda.png" />
+  <meta name="twitter:image" content="https://carsocket.cn/images/panda.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta name="twitter:creator" content="@http://blog.csdn.net/XieTongXueFlyMe" />
+  <meta property="og:url" content="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XeiTongXueFlyMe" />
+
+  <meta name="generator" content="Hugo 0.37.1" />
+  <link rel="canonical" href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%89-%E7%A8%8B%E5%BA%8F%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90/" />
+  <link rel="alternate" href="https://carsocket.cn/index.xml" type="application/rss+xml" title="XeiTongXueFlyMe">
+  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://carsocket.cn/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+  <link rel="stylesheet" href="https://imroc.io/static/prism/prism.css" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.min.css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.2/default-skin/default-skin.min.css" crossorigin="anonymous" />
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://carsocket.cn/">XeiTongXueFlyMe</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://carsocket.cn/categories/micro">嵌入式软件框架</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/j1939">SAE j1939</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/15765">ISO 15765</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/14229">ISO 14229</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/obd">OBD</a>
+                
+                
+                  <a href="https://carsocket.cn/categories/kwp2000">KWP2000</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">开源项目</a>
+              <div class="navlinks-children">
+                
+                
+                  <a href="https://github.com/XeiTongXueFlyMe/J1939/releases">J1939协议栈下载</a>
+                
+                
+                  <a href="https://xeitongxueflyme.github.io/j1939doc.github.io/">J1939协议栈说明书</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+              
+              
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+              
+              
+            </li>
+          
+        
+
+        
+
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="XeiTongXueFlyMe" href="https://carsocket.cn/">
+            <img class="avatar-img" src="https://carsocket.cn/images/panda.png" alt="XeiTongXueFlyMe" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">J1939socket_v1.1.0应用示例</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">2100 Words|Read in about 5 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+
+<h1 id="预备知识">预备知识</h1>
+
+<ol>
+<li>熟悉CAN2.0B协议，及相关硬件驱动开发</li>
+<li>熟悉SAE J1939协议</li>
+</ol>
+
+<h1 id="j1939协议栈的功能">J1939协议栈的功能</h1>
+
+<ol>
+<li>消息发送</li>
+<li>消息广播</li>
+<li>消息请求</li>
+<li>消息确认，响应</li>
+<li>群功能</li>
+<li>专用传输A</li>
+<li>专用传输B</li>
+<li>地址声明竞争</li>
+<li>远程地址配置</li>
+<li>自动重新分配地址</li>
+<li>多帧传输协议TP</li>
+</ol>
+
+<h1 id="接口函数简介">接口函数简介</h1>
+
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">J1939_Initialization (BOOL);</td>
+<td align="center">初始化一些全局变量，向总线声明地址（默认地址）</td>
+</tr>
+
+<tr>
+<td align="center">J1939_DequeueMessage (J1939_MESSAGE *MsgPtr)</td>
+<td align="center">从接受列队中复制接收消息到传入的内存中（*MsgPtr）</td>
+</tr>
+
+<tr>
+<td align="center">J1939_EnqueueMessage (J1939_MESSAGE *MsgPtr)</td>
+<td align="center">将传入的消息（*MsgPtr），复制到发送列队中</td>
+</tr>
+
+<tr>
+<td align="center">J1939_Poll (unsigned long ElapsedTime)</td>
+<td align="center">检查列队（轮询模式），提供小的延时，检查地址竞争</td>
+</tr>
+
+<tr>
+<td align="center">J1939_ISR (void)</td>
+<td align="center">CAN中断（发送和接受，can错误）函数入口</td>
+</tr>
+
+<tr>
+<td align="center">J1939_TP_TX_Message(unsigned int PGN,unsigned char SA,char *data,unsigned short data_num)</td>
+<td align="center">当我们需要发送字节数大于8字节的数据，调用这个函数启用TP协议将数据发送出去</td>
+</tr>
+
+<tr>
+<td align="center">J1939_TP_RX_Message(char *data,unsigned short data_num)</td>
+<td align="center">接收网络中TP协议的数据，并将数据存入data缓存</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="协议接口demo">协议接口demo</h1>
+
+<blockquote>
+<p><strong>API</strong> &ndash;&gt; J1939_Initialization (BOOL);【初始化一些全局变量，向总线声明地址（默认地址）】</p>
+
+<pre><code class="language-c">int main()
+{
+    //初始化can驱动
+    init_can();
+    //初始化J1939协议栈
+    J1939_Initialization( TRUE );
+    //等待地址超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //运行到这里，说明地址已经声明好在系统总线上（设备已挂载到总线上）
+    while(1)
+    {
+        ;
+    }
+}
+</code></pre>
+
+<p><strong>API</strong> &ndash;&gt; J1939_EnqueueMessage (J1939_MESSAGE *MsgPtr)；【将传入的消息（*MsgPtr），复制到发送列队中】</p>
+
+<pre><code class="language-c">void main( void )
+{
+    J1939_MESSAGE Msg;
+    /*在CAN驱动初始化中，请配置好滤波，说明参考移植函数（滤波函数）*/
+    /* can_init(); */
+
+    J1939_Initialization( TRUE );
+    //等待地址超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //运行到这里，说明地址已经声明好（设备已挂载到总线上）
+    while (1)
+    {
+    /********发送数据(参考J1939的ID组成填充下面)***********/
+        Msg.Mxe.DataPage = 0;
+        Msg.Mxe.Priority = J1939_CONTROL_PRIORITY;
+        Msg.Mxe.DestinationAddress = 0x0f;
+        Msg.Mxe.DataLength = 8;
+        Msg.Mxe.PDUFormat = 0xfe;
+        Msg.Mxe.Data[0] = 1;
+        Msg.Mxe.Data[1] = 2;
+        Msg.Mxe.Data[2] = 3;
+        Msg.Mxe.Data[3] = 4;
+        Msg.Mxe.Data[4] = 5;
+        Msg.Mxe.Data[5] = 6;
+        Msg.Mxe.Data[6] = 7;
+        Msg.Mxe.Data[7] = 8;
+        while (J1939_EnqueueMessage( &amp;Msg ) != RC_SUCCESS)
+            J1939_Poll(5);
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+
+<p><strong>API</strong> &ndash;&gt; J1939_DequeueMessage (J1939_MESSAGE *MsgPtr)；【从接受列队中复制接收消息到传入的内存中（*MsgPtr）】</p>
+
+<pre><code class="language-c">int main()
+{
+    J1939_MESSAGE Msg;
+    /*在CAN驱动初始化中，请配置好滤波，说明参考移植函数（滤波函数）*/
+    /* can_init(); */
+
+    J1939_Initialization( TRUE );
+    //等待地址超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //运行到这里，说明地址已经声明好（设备已挂载到总线上）
+    while(1)
+    {
+       /***********************处理接受数据*************************/
+        while (RXQueueCount &gt; 0)
+        {
+            J1939_DequeueMessage( &amp;Msg );
+            if (Msg.PDUFormat == 0x01)
+                //你的功能码;
+            else if (Msg.PDUFormat == 0x02)
+                //你的功能码;
+        }
+
+        J1939_Poll(20);
+        /********************j1939心跳函数*************************/
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+
+<p><strong>API</strong> &ndash;&gt;J1939_TP_TX_Message(unsigned int PGN,unsigned char SA,char *data,unsigned short data_num)【当我们需要发送字节数大于8字节的数据，调用这个函数启用TP协议将数据发送出去】</p>
+
+<pre><code class="language-c">void main( void )
+{
+    char data[100] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7};
+    
+    /*在CAN驱动初始化中，请配置好滤波，说明参考移植函数（滤波函数）*/
+    /* can_init(); */
+
+    J1939_Initialization( TRUE );
+    // 等待地址声明超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+          J1939_Poll(5);
+    //地址已经声明好（设备已挂载到总线上）
+    while(1)
+    {
+        /*发送一个长帧 data*/
+        while(J1939_TP_TX_Message(65259,0XF1,data,sizeof(data))==RC_SUCCESS)
+              J1939_Poll(5);
+        osDelay(10); 
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+
+<p><strong>API</strong> &ndash;&gt;J1939_TP_RX_Message(char *data,unsigned short data_num)【接收网络中TP协议的数据，并将数据存入data缓存】</p>
+
+<pre><code class="language-c">void main( void )
+{
+    //建议初始化缓存大小用  J1939_TP_MAX_MESSAGE_LENGTH
+    char data[J1939_TP_MAX_MESSAGE_LENGTH] = {0};
+    
+    /*在CAN驱动初始化中，请配置好滤波，说明参考移植函数（滤波函数）*/
+    /* can_init(); */
+
+    J1939_Initialization( TRUE );
+    // 等待地址声明超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //地址已经声明好（设备已挂载到总线上）
+    //最简单的示例
+    while(1)
+    {
+        /*读取TP接受数据*/
+        while(J1939_TP_RX_Message( data，sizeof(data))==RC_SUCCESS)
+            J1939_Poll(5);
+
+        osDelay(1); //基本单位为10ms * 1;
+        J1939_Poll(20);
+    }
+
+    //完整的接受逻辑示例
+    while(1)
+    {
+        /*判断有没有接受的TP到来*/
+        if(TP_RX_MSG.tp_rx_msg.byte_count &gt;0)
+        {
+            /*判断数据是否是我们想要的PGN*/
+            if(TP_RX_MSG.tp_rx_msg.PGN == 我们想要的PGN)
+            {
+                while(J1939_TP_RX_Message( data，sizeof(data))==RC_SUCCESS)
+                J1939_Poll(5);
+            }
+        }
+        osDelay(1); //基本单位为10ms * 1;
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+
+<h1 id="示例1-轮询模式">示例1&mdash;轮询模式</h1>
+
+<p>备注：接受处理，不是标准的接受处理。这里只是测试接受</p>
+
+<pre><code class="language-c">void main( void )
+{
+    J1939_MESSAGE Msg;
+    can_init();
+    J1939_Initialization( TRUE );
+    //等待地址超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //设备确认总线上没有，竞争地址的设备存在
+    while (1)
+    {
+    /***********************发送数据***************************/
+        Msg.Mxe.DataPage                = 0;
+        Msg.Mxe.Priority                = J1939_CONTROL_PRIORITY;
+        Msg.Mxe.DestinationAddress      = OTHER_NODE;
+        Msg.Mxe.DataLength              = 8;
+        Msg.Mxe.PDUFormat               = 0xfe;
+        Msg.Mxe.Data[0]         = 0xFF;
+        Msg.Mxe.Data[1]         = 0xFF;
+        Msg.Mxe.Data[2]         = 0xFF;
+        Msg.Mxe.Data[3]         = 0xFF;
+        Msg.Mxe.Data[4]         = 0xFF;
+        Msg.Mxe.Data[5]         = 0xFF;
+        Msg.Mxe.Data[6]         = 0xFF;
+        Msg.Mxe.Data[7]         = 0xFF; 
+        while (J1939_EnqueueMessage( &amp;Msg ) != RC_SUCCESS)
+            J1939_Poll(5);
+     /***********************处理接受数据*************************/
+        while (RXQueueCount &gt; 0)
+        {
+            J1939_DequeueMessage( &amp;Msg );
+            if (Msg.Mxe.PDUFormat == 0x01)
+                //你的功能码;
+            else if (Msg.Mxe.PDUFormat == 0x02)
+                //你的功能码;
+        }
+        
+        J1939_Poll(20);
+    }
+}
+</code></pre>
+</blockquote>
+
+<h1 id="示例2-中断模式">示例2&mdash;中断模式</h1>
+
+<pre><code class="language-c">void main()
+{
+    can_init();
+    J1939_Initialization( TRUE );
+    //等待地址超时
+    while (J1939_Flags.WaitingForAddressClaimContention)
+        J1939_Poll(5);
+    //设备确认总线上没有，竞争地址的设备存在
+    while (1)
+    {
+        //判断接受列队中，存在多少个接受消息（RXQueueCount ）
+        while (RXQueueCount &gt; 0)
+        {
+            //读取接受列队中的数据到Msg （出队）
+            J1939_DequeueMessage( &amp;Msg );
+            /*判断是否是数据请求帧*/
+            if (Msg.Mxe.PDUFormat == J1939_PF_REQUEST)
+            {
+                //判断参数群是否被本设备支持
+                if ((Msg.Mxe.Data[0] == J1939_PGN0_REQ_ENGINE_SPEED) &amp;&amp;
+                     (Msg.Mxe.Data[1] == J1939_PGN1_REQ_ENGINE_SPEED) &amp;&amp;
+                     (Msg.Mxe.Data[2] == J1939_PGN2_REQ_ENGINE_SPEED))
+                {
+                    if (某种原因不能响应)
+                    {
+                        /*********发送不能响应（参考J1939-21）*************/
+                        Msg.Mxe.Priority            = J1939_ACK_PRIORITY;
+                        Msg.Mxe.DataPage            = 0;
+                        Msg.Mxe.PDUFormat           = J1939_PF_ACKNOWLEDGMENT;
+                        Msg.Mxe.DestinationAddress  = Msg.SourceAddress;
+                        Msg.Mxe.DataLength          = 8;
+                        Msg.Mxe.Data[0]         = J1939_NACK_CONTROL_BYTE;
+                        Msg.Mxe.Data[1]         = 0xFF;
+                        Msg.Mxe.Data[2]         = 0xFF;
+                        Msg.Mxe.Data[3]         = 0xFF;
+                        Msg.Mxe.Data[4]         = 0xFF;
+                        Msg.Mxe.Data[5]         = J1939_PGN0_REQ_ENGINE_SPEED;
+                        Msg.Mxe.Data[6]         = J1939_PGN1_REQ_ENGINE_SPEED;
+                        Msg.Mxe.Data[7]         = J1939_PGN2_REQ_ENGINE_SPEED;
+                    }
+                    else
+                    {
+                    /*******************上传相关的参数群*****************/
+                        Msg.Mxe.Priority    = J1939_INFO_PRIORITY;
+                        Msg.Mxe.DataPage    = J1939_PGN2_REQ_ENGINE_SPEED &amp; 0x01;
+                        Msg.Mxe.PDUFormat   = J1939_PGN1_REQ_ENGINE_SPEED;
+                        Msg.Mxe.GroupExtension = J1939_PGN0_REQ_ENGINE_SPEED;
+                        Msg.Mxe.DataLength  = 1;
+                        Msg.Mxe.Data[0]     = EngineSpeed;
+                    }
+                    while (J1939_EnqueueMessage( &amp;Msg ) != RC_SUCCESS);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://carsocket.cn/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/" data-toggle="tooltip" data-placement="top" title="J1939socket_v1.1.0源代码分析1">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://carsocket.cn/posts/obd/obd%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="Obd入门">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%9B%9B-j1939_setaddressfilterunsigned-char-ps_address/">J1939socket_v1.1.0源代码分析1</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%85%AD-j1939_can_transmitj1939_message--msgptr/">J1939socket_v1.1.0源代码分析3</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%AE%9E%E8%B7%B5%E5%88%A9%E7%94%A8j1939%E4%BC%A0%E8%BE%938%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AEtp%E9%95%BF%E5%B8%A7%E4%BC%A0%E8%BE%93/">利用J1939传输8字节以上的数据（TP长帧传输）</a></li>
+                    
+                    <li><a href="/posts/j1939/%E5%85%B3%E4%BA%8Ej1939_v2.1.0/">J1939socket_v2.1.0的移植，示例，API</a></li>
+                    
+                    <li><a href="/posts/j1939/sae-j1939-%E5%8D%8F%E8%AE%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E4%BA%94-changegroupidoflmo/">J1939socket_v1.1.0源代码分析2</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed Jan 31, 2018</h4>
+    </section>
+    <h5 id="wc">2100 Words|Read in about 5 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://carsocket.cn/tags/j1939/">j1939</a> &nbsp;
+        
+        <a href="https://carsocket.cn/tags/j1939%E6%BA%90%E4%BB%A3%E7%A0%81/">j1939源代码</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+			
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XeiTongXueFlyMe" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/http://blog.csdn.net/XieTongXueFlyMe" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://carsocket.cn/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="XeiTongXueFlyMe.io">XeiTongXueFlyMe</a>
+                      
+          
+          
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://carsocket.cn/">XeiTongXueFlyMe</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.37.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          &nbsp;&bull;&nbsp;[<a href="true"></a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.2/photoswipe.js"></script>
+<script src="https://carsocket.cn/js/auto-render.min.js"></script>
+<script src="https://carsocket.cn/js/main.js"></script>
+<script src="https://imroc.io/static/prism/prism.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.7.1/katex.min.js"></script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+  </body>
+</html>
+

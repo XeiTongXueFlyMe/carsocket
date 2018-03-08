@@ -11,6 +11,11 @@
   </url>
   
   <url>
+    <loc>https://carsocket.cn/posts/micro/micro_3_%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/</loc>
+    <lastmod>2018-03-08T18:13:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://carsocket.cn/posts/micro/micro_2_%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-02-27T10:03:06+08:00</lastmod>
   </url>
@@ -96,13 +101,13 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/15765/</loc>
+    <loc>https://carsocket.cn/tags/15765/</loc>
     <lastmod>2018-02-03T10:15:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/15765/</loc>
+    <loc>https://carsocket.cn/categories/15765/</loc>
     <lastmod>2018-02-03T10:15:45+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -125,13 +130,13 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/j1939/</loc>
+    <loc>https://carsocket.cn/tags/j1939/</loc>
     <lastmod>2018-01-31T15:16:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/tags/j1939/</loc>
+    <loc>https://carsocket.cn/categories/j1939/</loc>
     <lastmod>2018-01-31T15:16:36+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -143,32 +148,26 @@
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/kwp2000/</loc>
-    <lastmod>2018-02-03T15:09:36+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://carsocket.cn/tags/kwp2000/</loc>
     <lastmod>2018-02-03T15:09:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/micro/</loc>
-    <lastmod>2018-02-27T10:03:06+08:00</lastmod>
+    <loc>https://carsocket.cn/categories/kwp2000/</loc>
+    <lastmod>2018-02-03T15:09:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://carsocket.cn/tags/micro/</loc>
-    <lastmod>2018-02-27T10:03:06+08:00</lastmod>
+    <lastmod>2018-03-08T18:13:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://carsocket.cn/categories/obd/</loc>
-    <lastmod>2018-02-05T19:57:34+08:00</lastmod>
+    <loc>https://carsocket.cn/categories/micro/</loc>
+    <lastmod>2018-03-08T18:13:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -179,8 +178,14 @@
   </url>
   
   <url>
+    <loc>https://carsocket.cn/categories/obd/</loc>
+    <lastmod>2018-02-05T19:57:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://carsocket.cn/posts/</loc>
-    <lastmod>2018-02-27T10:03:06+08:00</lastmod>
+    <lastmod>2018-03-08T18:13:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -192,7 +197,7 @@
   
   <url>
     <loc>https://carsocket.cn/</loc>
-    <lastmod>2018-02-27T10:03:06+08:00</lastmod>
+    <lastmod>2018-03-08T18:13:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

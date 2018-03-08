@@ -6,10 +6,19 @@
     <description>Recent content in Posts on XeiTongXueFlyMe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 27 Feb 2018 10:03:06 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Mar 2018 18:13:00 +0800</lastBuildDate>
     
 	<atom:link href="https://carsocket.cn/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Micro_3_代码质量</title>
+      <link>https://carsocket.cn/posts/micro/micro_3_%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/</link>
+      <pubDate>Thu, 08 Mar 2018 18:13:00 +0800</pubDate>
+      
+      <guid>https://carsocket.cn/posts/micro/micro_3_%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/</guid>
+      <description>Micro代码质量 对于一个程序员来说，谈起怎么写出高质量的代码，这个问题是很令人兴奋的，一千个读者就要一千个哈姆雷特。我们不妨来简单的总结一</description>
+    </item>
     
     <item>
       <title>Micro_2_项目管理</title>
